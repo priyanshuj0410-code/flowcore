@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlowCore — Localisation Config</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        border: 'hsl(214.3 31.8% 91.4%)',
+        input:  'hsl(214.3 31.8% 91.4%)',
+        ring:   'hsl(222.2 84% 4.9%)',
+        background: 'hsl(0 0% 100%)',
+        foreground:  'hsl(222.2 84% 4.9%)',
+        muted: { DEFAULT:'hsl(210 40% 96.1%)', foreground:'hsl(215.4 16.3% 46.9%)' },
+        destructive: { DEFAULT:'hsl(0 84.2% 60.2%)', foreground:'hsl(210 40% 98%)' },
+        secondary: { DEFAULT:'hsl(210 40% 96.1%)', foreground:'hsl(222.2 47.4% 11.2%)' },
+        accent: { DEFAULT:'hsl(210 40% 96.1%)', foreground:'hsl(222.2 47.4% 11.2%)' },
+        card: { DEFAULT:'hsl(0 0% 100%)', foreground:'hsl(222.2 84% 4.9%)' },
+      },
+      fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','sans-serif'] }
+    }
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 2px; }
+
+  /* Slider */
+  input[type=range] { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: #e2e8f0; outline: none; width: 100%; cursor: default; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: white; border: 2px solid #64748b; cursor: default; }
+
+  /* Tab underline active */
+  .tab-trigger { border-bottom: 2px solid transparent; transition: border-color .15s, color .15s; }
+  .tab-trigger.active { border-color: #0f172a; color: #0f172a; }
+
+  /* Market btn active */
+  .mkt-btn-us.active { background: #eff6ff; border-color: #93c5fd; color: #1e40af; }
+  .mkt-btn-jp.active { background: #fffbeb; border-color: #fcd34d; color: #92400e; }
+
+  /* Card hover */
+  .task-card { transition: border-color .15s; cursor: pointer; }
+  .task-card:hover { border-color: #94a3b8; }
+  .task-card.selected-jp { border-color: #f59e0b; box-shadow: 0 0 0 1px #fde68a; }
+
+  /* Switch */
+  .switch { display:inline-flex; align-items:center; width:36px; height:20px; border-radius:9999px; background:#e2e8f0; position:relative; flex-shrink:0; }
+  .switch.on { background:#0f172a; }
+  .switch.on-amber { background:#d97706; }
+  .switch.on-green { background:#16a34a; }
+  .switch::after { content:''; position:absolute; width:14px; height:14px; border-radius:50%; background:white; left:3px; transition:left .15s; box-shadow:0 1px 2px rgba(0,0,0,.2); }
+  .switch.on::after, .switch.on-amber::after, .switch.on-green::after { left:19px; }
+
+  /* Animate frame slide */
+  #frames-container { transition: transform .45s cubic-bezier(.4,0,.2,1); }
+
+  /* Select */
+  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; padding-right: 28px !important; }
+
+  .lock-badge { font-size:10px; padding:1px 6px; border-radius:3px; border-width:1px; border-style:solid; }
+  .lock-market { background:#f5f3ff; color:#7c3aed; border-color:#ddd6fe; }
+  .lock-it     { background:#fef2f2; color:#dc2626; border-color:#fecaca; }
+  .lock-ops    { background:#eff6ff; color:#2563eb; border-color:#bfdbfe; }
+
+  .section-head { display:flex; align-items:center; gap:8px; margin-top:20px; margin-bottom:12px; }
+  .section-head:first-child { margin-top:4px; }
+  .section-head span { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; white-space:nowrap; }
+  .section-head hr { flex:1; border:none; border-top:1px solid #f1f5f9; margin:0; }
+
+  .ctrl-block { margin-bottom:14px; }
+  .ctrl-block.inherited { opacity:.4; pointer-events:none; }
+  .ctrl-label { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:6px; font-size:12px; color:#64748b; }
+
+  .delta-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:5px; font-size:11px; }
+  .delta-us { color:#93c5fd; }
+  .delta-us.live { color:#2563eb; font-weight:600; }
+  .delta-jp { color:#fcd34d; }
+  .delta-jp.live { color:#d97706; font-weight:600; }
+
+  .range-note { font-size:10px; color:#94a3b8; background:#f8fafc; border:1px solid #f1f5f9; border-radius:4px; padding:3px 8px; margin-top:4px; line-height:1.5; }
+
+  /* Badge */
+  .badge { display:inline-flex; align-items:center; font-size:10px; padding:1px 7px; border-radius:9999px; font-weight:500; }
+  .badge-default   { background:#0f172a; color:white; }
+  .badge-secondary { background:#f1f5f9; color:#475569; }
+  .badge-destructive { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+  .badge-warning   { background:#fffbeb; color:#92400e; border:1px solid #fde68a; }
+  .badge-blue      { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; }
+  .badge-green     { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+  .badge-amber     { background:#fffbeb; color:#92400e; border:1px solid #fde68a; }
+  .badge-outline   { background:transparent; color:#64748b; border:1px solid #e2e8f0; }
+
+  /* Alert */
+  .alert { border-radius:8px; border-width:1px; border-style:solid; padding:12px 14px; }
+  .alert-blue  { background:#eff6ff; border-color:#bfdbfe; }
+  .alert-amber { background:#fffbeb; border-color:#fde68a; }
+  .alert-green { background:#f0fdf4; border-color:#bbf7d0; }
+
+  /* Button */
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:500; border-radius:6px; border:1px solid; cursor:pointer; transition:background .13s, border-color .13s; padding:0 12px; height:30px; }
+  .btn-sm { height:26px; font-size:11px; padding:0 10px; }
+  .btn-default { background:#0f172a; color:white; border-color:#0f172a; }
+  .btn-default:hover { background:#1e293b; }
+  .btn-outline { background:white; color:#374151; border-color:#e2e8f0; }
+  .btn-outline:hover { background:#f8fafc; }
+  .btn-ghost { background:transparent; border-color:transparent; color:#374151; }
+  .btn-ghost:hover { background:#f1f5f9; }
+  .btn-secondary { background:#f1f5f9; color:#374151; border-color:#e2e8f0; }
+  .btn-secondary:hover { background:#e2e8f0; }
+  .btn-amber { background:#d97706; color:white; border-color:#d97706; }
+  .btn-amber:hover { background:#b45309; }
+
+  /* Chain dot */
+  .chain-dot-done { background:#22c55e; }
+  .chain-dot-pend { background:#f59e0b; }
+  .chain-dot-wait { background:#e2e8f0; border:1px solid #cbd5e1; }
+</style>
+</head>
+<body class="bg-background text-foreground h-screen overflow-hidden flex">
+
+<!-- ═══════════════════════════════════════════════════════
+     CONFIG PANEL
+════════════════════════════════════════════════════════ -->
+<div class="w-72 shrink-0 h-screen border-r bg-white flex flex-col overflow-hidden">
+
+  <!-- Market selector -->
+  <div class="px-4 pt-4 pb-3 border-b">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-3">FlowCore · Localisation Config</p>
+    <div class="grid grid-cols-2 gap-2">
+      <button onclick="setMarket('us')" id="btn-us" class="btn btn-outline mkt-btn-us active justify-start gap-2">
+        🇺🇸 <span>United States</span>
+      </button>
+      <button onclick="setMarket('jp')" id="btn-jp" class="btn btn-outline mkt-btn-jp justify-start gap-2">
+        🇯🇵 <span>日本</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Persona tabs -->
+  <div class="flex border-b shrink-0">
+    <button class="tab-trigger active flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('market',this)">Market</button>
+    <button class="tab-trigger flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('it',this)">IT Admin</button>
+    <button class="tab-trigger flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('ops',this)">Ops</button>
+    <button class="tab-trigger flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('user',this)">User</button>
+  </div>
+
+  <!-- Panel content -->
+  <div class="flex-1 overflow-y-auto">
+    <div class="px-4 py-3" id="panel-content"></div>
+  </div>
+
+  <div class="px-4 py-2 border-t shrink-0">
+    <p class="text-[10px] text-muted-foreground">FlowCore · Market config · Design exercise</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SLIDING PRODUCT FRAMES
+════════════════════════════════════════════════════════ -->
+<div class="flex-1 overflow-hidden h-screen">
+  <div id="frames-container" class="flex h-full" style="width:200%">
+
+    <!-- US FRAME -->
+    <div class="h-full overflow-hidden flex flex-col" style="width:50%">
+      <div class="px-5 pt-4 pb-2 bg-white border-b shrink-0">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-4 h-0.5 rounded-full bg-blue-500"></div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">United States · English</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="badge badge-blue">Agent acts first, you review later</span>
+          <span class="badge badge-blue">Progressive disclosure</span>
+          <span class="badge badge-blue">Direct tone</span>
+        </div>
+      </div>
+      <!-- US topbar -->
+      <div class="flex items-center justify-between px-4 py-2 border-b bg-white shrink-0">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+          <span class="font-semibold text-sm">FlowCore</span>
+        </div>
+        <nav class="flex gap-0.5">
+          <button class="btn btn-secondary btn-sm">Tasks</button>
+          <button class="btn btn-ghost btn-sm">Workflows</button>
+          <button class="btn btn-ghost btn-sm">Reports</button>
+          <button class="btn btn-ghost btn-sm">Settings</button>
+        </nav>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-muted-foreground">James D. · Ops Lead</span>
+          <div class="w-7 h-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-medium">JD</div>
+        </div>
+      </div>
+      <div class="flex flex-1 overflow-hidden">
+        <!-- US sidebar -->
+        <div class="w-44 shrink-0 border-r bg-white py-2 overflow-y-auto flex flex-col gap-0">
+          <div class="px-3 mb-2">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">Workspace</p>
+            <button class="btn btn-secondary btn-sm w-full justify-between mb-0.5">Tasks <span class="badge badge-destructive" style="font-size:9px;padding:0 5px">3</span></button>
+            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Workflows <span class="badge badge-warning" style="font-size:9px;padding:0 5px">7</span></button>
+            <button class="btn btn-ghost btn-sm w-full justify-start mb-0.5">Reports</button>
+            <button class="btn btn-ghost btn-sm w-full justify-start mb-0.5">Settings</button>
+          </div>
+          <hr class="mx-3 border-border mb-2" />
+          <div class="px-3 mb-2">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">Departments</p>
+            <button class="btn btn-secondary btn-sm w-full justify-start mb-0.5">All</button>
+            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Procurement <span class="text-muted-foreground text-[10px]">4</span></button>
+            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Logistics <span class="text-muted-foreground text-[10px]">2</span></button>
+            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Finance <span class="text-muted-foreground text-[10px]">3</span></button>
+          </div>
+          <hr class="mx-3 border-border mb-2" />
+          <div class="px-3">
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">FlowAgent</p>
+            <p class="text-xs text-green-600 leading-6 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>Active · autonomous</p>
+            <p class="text-xs text-muted-foreground leading-6">3 actions taken today</p>
+          </div>
+        </div>
+        <!-- US main -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-white border rounded-lg p-3"><p class="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">On track</p><p class="text-2xl font-light text-green-600">84%</p><p class="text-[10px] text-muted-foreground mt-0.5">↑ 6% this week</p></div>
+            <div class="bg-white border rounded-lg p-3"><p class="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Handled by agent</p><p class="text-2xl font-light">12</p><p class="text-[10px] text-muted-foreground mt-0.5">this week</p></div>
+            <div class="bg-white border rounded-lg p-3"><p class="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Awaiting you</p><p class="text-2xl font-light text-amber-600">3</p><p class="text-[10px] text-muted-foreground mt-0.5">needs review</p></div>
+          </div>
+          <div class="alert alert-blue">
+            <div class="flex items-center gap-2 mb-1.5"><span class="badge badge-default" style="font-size:9px">AI</span><span class="font-semibold text-blue-800 text-sm">FlowAgent — 3 actions taken</span></div>
+            <p class="text-xs text-blue-700 leading-relaxed mb-2.5">Sent reminders to Lisa (Procurement) and Marcus (Logistics). Escalated Q1 materials approval to dept head.</p>
+            <div class="flex gap-2"><button class="btn btn-outline btn-sm" style="border-color:#93c5fd;color:#1d4ed8">See full log</button><button class="btn btn-ghost btn-sm text-blue-600">Undo last action</button></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Your tasks</p>
+              <div class="flex gap-1"><span class="badge badge-blue">All</span><span class="badge badge-outline">Urgent</span><span class="badge badge-outline">Agent handled</span></div>
+            </div>
+            <div class="space-y-2">
+              <div class="task-card bg-white border rounded-lg p-3"><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-destructive">At risk</span><span class="text-sm font-medium flex-1 truncate">Q1 Materials Procurement — Final Approval</span><button class="btn btn-ghost btn-sm text-blue-600" style="flex-shrink:0">Review →</button></div><div class="flex flex-wrap gap-1.5"><span class="badge badge-secondary">Procurement</span><span class="text-[10px] text-muted-foreground">Lisa M.</span><span class="text-[10px] text-muted-foreground">Due in 2 days</span></div></div>
+              <div class="task-card bg-white border rounded-lg p-3"><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-destructive">At risk</span><span class="text-sm font-medium flex-1 truncate">Osaka → Tokyo Delivery Schedule</span><button class="btn btn-ghost btn-sm text-blue-600" style="flex-shrink:0">Review →</button></div><div class="flex flex-wrap gap-1.5"><span class="badge badge-secondary">Logistics</span><span class="text-[10px] text-muted-foreground">Marcus T.</span><span class="text-[10px] text-muted-foreground">Due tomorrow</span><span class="badge badge-green">Reminder sent</span></div></div>
+              <div class="task-card bg-white border rounded-lg p-3"><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-secondary">Watch</span><span class="text-sm font-medium flex-1 truncate">Q2 Budget Draft — Team Review</span><button class="btn btn-ghost btn-sm text-blue-600" style="flex-shrink:0">Review →</button></div><div class="flex flex-wrap gap-1.5"><span class="badge badge-secondary">Finance</span><span class="text-[10px] text-muted-foreground">Sarah K.</span><span class="text-[10px] text-muted-foreground">Due in 5 days</span><span class="badge badge-blue">On track</span></div></div>
+            </div>
+          </div>
+          <div class="alert alert-green"><div class="flex items-center gap-2 text-xs text-green-700"><span>✓</span><span>FlowAgent handled 2 reminders and 1 escalation — nothing else required.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JP FRAME -->
+    <div class="h-full overflow-hidden flex flex-col" style="width:50%">
+      <div class="px-5 pt-4 pb-2 bg-white border-b shrink-0">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-0.5 rounded-full bg-amber-500"></div>
+            <span id="jp-frame-label" class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Japan · 日本語</span>
+          </div>
+          <button onclick="toggleJpLang()" class="btn btn-outline btn-sm gap-1">
+            <span id="lt-jp" class="text-amber-600 font-semibold">JP</span>
+            <span class="text-muted-foreground">·</span>
+            <span id="lt-en" class="text-muted-foreground">EN</span>
+          </button>
+        </div>
+        <div id="jp-chips" class="flex flex-wrap gap-1.5"></div>
+      </div>
+      <!-- JP topbar -->
+      <div class="flex items-center justify-between px-4 py-2 border-b bg-white shrink-0">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-amber-500"></div>
+          <span class="font-semibold text-sm">FlowCore</span>
+          <span id="jp-sub" class="text-xs text-muted-foreground">エンタープライズ</span>
+        </div>
+        <nav id="jp-nav" class="flex gap-0.5"></nav>
+        <div class="flex items-center gap-2">
+          <span id="jp-env" class="text-xs text-muted-foreground flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>本番環境</span>
+          <span id="jp-user" class="text-xs text-muted-foreground hidden xl:block">田中 太郎 / 業務部長</span>
+          <div id="jp-avatar" class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-medium">田</div>
+        </div>
+      </div>
+      <div class="flex flex-1 overflow-hidden">
+        <!-- JP sidebar -->
+        <div class="w-44 shrink-0 border-r bg-white py-2 overflow-y-auto flex flex-col">
+          <div class="px-3 mb-2">
+            <p id="jp-ws-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">ワークスペース</p>
+            <div id="jp-sb-nav"></div>
+          </div>
+          <hr class="mx-3 border-border mb-2" />
+          <div class="px-3 mb-2">
+            <p id="jp-dept-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">部門フィルター</p>
+            <div id="jp-depts"></div>
+          </div>
+          <hr class="mx-3 border-border mb-2" />
+          <div class="px-3">
+            <p id="jp-agent-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">エージェント状態</p>
+            <div id="jp-agent-lines"></div>
+          </div>
+        </div>
+        <!-- JP main -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50" id="jp-main"></div>
+        <!-- JP right panel -->
+        <div class="w-48 shrink-0 border-l bg-white overflow-y-auto p-3">
+          <p id="jp-audit-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2">監査ログ</p>
+          <div id="jp-audit" class="divide-y"></div>
+          <hr class="my-3 border-border" />
+          <p id="jp-perm-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2">権限レベル</p>
+          <div id="jp-perms" class="space-y-1.5"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── DATA ────────────────────────────────────────────────────────────────────
+const CFG = {
+  us: {
+    voice:       { val:55, label:'Professional', us:'Approachable register',    jp:'Keigo (敬語) register' },
+    tone:        { val:30, label:'Warm',          us:'Warm & conversational',   jp:'Humble & face-preserving' },
+    directness:  { val:78, label:'Direct',        us:'State facts plainly',     jp:"Hint, don't state" },
+    hierarchy:   { on:false, us:'Off — flat language',         jp:'On — 部長/課長 shown' },
+    facesaving:  { on:false, us:'Off — direct accountability', jp:'On — no blame attribution' },
+    lang:        { val:'EN',              us:'English (en-US)',         jp:'Japanese (ja-JP)' },
+    density:     { val:30, label:'Low',   us:'3 KPI cards',             jp:'4 KPI cards, all upfront' },
+    space:       { val:68, label:'Spacious', us:'24px base spacing',    jp:'12px base spacing' },
+    depth:       { val:20, label:'Progressive', us:'Click to expand',  jp:'All data upfront' },
+    datefmt:     { val:'MM/DD/YY',        us:'MM/DD/YY',                jp:'YYYY/MM/DD, 全角' },
+    authority:   { val:'Autonomous',      us:'Agent acts, you review',  jp:'Agent proposes, human approves' },
+    approvalvis: { on:false, us:'Hidden from view',             jp:'Ringi chain always visible' },
+    auditlog:    { on:false, us:"On-demand, behind 'See log'",  jp:'Persistent — always visible' },
+    escalation:  { on:false, us:'Off — agent can bypass',       jp:'On — chain must complete' },
+    residency:   { val:'US-East-1',       us:'US-East-1 (Virginia)',    jp:'AP-Northeast-1 (Tokyo)' },
+    seniority:   { val:'Any',             us:'Any user',                jp:'係長 or above' },
+    retention:   { val:'90d',             us:'90 days',                 jp:'7yr (regulatory min.)' },
+  },
+  jp: {
+    voice:       { val:88, label:'Formal',        us:'Approachable register',    jp:'Keigo (敬語) register' },
+    tone:        { val:78, label:'Deferential',   us:'Warm & conversational',    jp:'Humble & face-preserving' },
+    directness:  { val:22, label:'Indirect',      us:'State facts plainly',      jp:"Hint, don't state" },
+    hierarchy:   { on:true,  us:'Off — flat language',         jp:'On — 部長/課長 shown' },
+    facesaving:  { on:true,  us:'Off — direct accountability', jp:'On — no blame attribution' },
+    lang:        { val:'JP',              us:'English (en-US)',          jp:'Japanese (ja-JP)' },
+    density:     { val:75, label:'High',  us:'3 KPI cards',              jp:'4 KPI cards, all upfront' },
+    space:       { val:28, label:'Compact', us:'24px base spacing',      jp:'12px base spacing' },
+    depth:       { val:82, label:'Upfront', us:'Click to expand',        jp:'All data upfront' },
+    datefmt:     { val:'YYYY/MM/DD',      us:'MM/DD/YY',                 jp:'YYYY/MM/DD, 全角' },
+    authority:   { val:'Require approval', us:'Agent acts, you review',  jp:'Agent proposes, human approves' },
+    approvalvis: { on:true,  us:'Hidden from view',             jp:'Ringi chain always visible' },
+    auditlog:    { on:true,  us:"On-demand, behind 'See log'",  jp:'Persistent — always visible' },
+    escalation:  { on:true,  us:'Off — agent can bypass',       jp:'On — chain must complete' },
+    residency:   { val:'AP-NE-1 Tokyo',   us:'US-East-1 (Virginia)',     jp:'AP-Northeast-1 (Tokyo)' },
+    seniority:   { val:'係長+',            us:'Any user',                 jp:'係長 or above' },
+    retention:   { val:'7yr',             us:'90 days',                  jp:'7yr (regulatory min.)' },
+  },
+}
+
+const STR = {
+  jp: {
+    chips: ['提案のみ · 自律実行しない','稟議フロー常時表示','全情報をアップフロントで表示'],
+    frameLabel:'Japan · 日本語', sub:'エンタープライズ',
+    nav:['タスク管理','承認フロー','レポート','設定'],
+    env:'本番環境', user:'田中 太郎 / 業務部長', avatar:'田',
+    wsLabel:'ワークスペース', deptLabel:'部門フィルター', agentLabel:'エージェント状態',
+    depts:['全部門','調達部','物流部','財務部'],
+    agentLines:['監視モード: 有効','自律実行: 無効','提案モード: 有効'],
+    kpis:[{l:'遅延リスク',v:'3',s:'前日比 +2',danger:true},{l:'承認待ち',v:'7',s:'平均 1.4日'},{l:'完了率 (今週)',v:'84%',s:'目標: 90%',warn:true},{l:'提案 (承認待ち)',v:'5',s:'要確認',warn:true}],
+    sectionTitle:'遅延リスクタスク一覧', sectionNote:'エージェントが検知 · 要確認',
+    tasks:[
+      {risk:'高リスク',hi:true, name:'Q1原材料調達 — 最終承認待ち',       dept:'調達部',owner:'担当: 山田 課長',due:'期限: 3/26',rem:'残2日', remDanger:true},
+      {risk:'高リスク',hi:true, name:'大阪倉庫 → 東京配送スケジュール確定',dept:'物流部',owner:'担当: 佐藤 係長',due:'期限: 3/25',rem:'残1日', remDanger:true},
+      {risk:'中リスク',hi:false,name:'Q2予算策定レビュー (第3次案)',      dept:'財務部',owner:'担当: 鈴木 部長',due:'期限: 3/29',rem:'残5日', remDanger:false},
+    ],
+    agentTitle:'エージェント提案', agentSub:'自律実行なし · 要承認',
+    agentBody:'Q1原材料調達の最終承認期限まで残り2日です。現在「部長承認」ステップで止まっています。\n\n→ 鈴木部長へリマインダーを送信することを提案します。送信前にご確認ください。',
+    agentBtns:['この提案を承認して送信','内容を修正してから送信','却下'],
+    chainTitle:'承認フロー（稟議）',
+    chain:[
+      {s:'done',   name:'担当者確認（山田 課長）',   sub:'内容・金額チェック完了',  time:'3/22 10:05'},
+      {s:'done',   name:'部門長確認（佐藤 部長代理）',sub:'コンプライアンス確認完了',time:'3/23 14:30'},
+      {s:'pending',name:'最終承認（鈴木 部長）',     sub:'承認待ち — 2日経過',     time:'期限 3/26',warn:true},
+      {s:'waiting',name:'経理部 記帳処理',           sub:'前ステップ完了後に開始',  time:'—'},
+    ],
+    auditLabel:'監査ログ', permLabel:'権限レベル',
+    audit:[
+      {time:'14:31:08',who:'[エージェント]',sys:true, text:'調達タスクの遅延リスクを検知。提案を生成。未送信。'},
+      {time:'14:28:45',who:'田中 太郎',    sys:false,text:'が物流タスクを確認しました。'},
+      {time:'14:15:02',who:'山田 課長',    sys:false,text:'がコメントを追加しました。'},
+      {time:'13:50:30',who:'[エージェント]',sys:true, text:'3件のリスクタスクを特定。通知は未送信。'},
+    ],
+    perms:[['閲覧','全員'],['提案承認','係長以上'],['外部送信','課長以上'],['最終承認','部長']],
+  },
+  en: {
+    chips: ['Suggest only · no autonomous action','Approval chain always visible','All information shown upfront'],
+    frameLabel:'Japan · English (JP structure)', sub:'Enterprise',
+    nav:['Task mgmt.','Approval flow','Reports','Settings'],
+    env:'Production', user:'T. Tanaka / Operations Mgr.', avatar:'T',
+    wsLabel:'Workspace', deptLabel:'Dept. filter', agentLabel:'Agent status',
+    depts:['All depts.','Procurement','Logistics','Finance'],
+    agentLines:['Monitoring: Active','Autonomous exec: Disabled','Suggest mode: Active'],
+    kpis:[{l:'Delay risk',v:'3',s:'+2 vs yesterday',danger:true},{l:'Awaiting approval',v:'7',s:'Avg. 1.4 days'},{l:'Completion (week)',v:'84%',s:'Target: 90%',warn:true},{l:'Suggestions pending',v:'5',s:'Requires review',warn:true}],
+    sectionTitle:'Delay risk tasks', sectionNote:'Agent-detected · review required',
+    tasks:[
+      {risk:'High risk',  hi:true, name:'Q1 Raw Materials — Final Approval',   dept:'Procurement',owner:'Owner: Sec. Chief Yamada', due:'Due: 3/26',rem:'2 days left',remDanger:true},
+      {risk:'High risk',  hi:true, name:'Osaka WH → Tokyo Delivery Schedule', dept:'Logistics',  owner:'Owner: Sub-chief Sato',    due:'Due: 3/25',rem:'1 day left', remDanger:true},
+      {risk:'Medium risk',hi:false,name:'Q2 Budget Review — Draft v3',         dept:'Finance',    owner:'Owner: Dept. Head Suzuki', due:'Due: 3/29',rem:'5 days left',remDanger:false},
+    ],
+    agentTitle:'Agent suggestion', agentSub:'No autonomous action · Requires approval',
+    agentBody:`The final approval deadline for Q1 Raw Materials is in 2 days. The task is stalled at the "Dept. Head approval" step.\n\n→ Proposing a reminder to Dept. Head Suzuki. Please review before it is sent.`,
+    agentBtns:['Approve & send','Edit before sending','Dismiss'],
+    chainTitle:'Approval chain (ringi)',
+    chain:[
+      {s:'done',   name:'Initiator review (Sec. Chief Yamada)',sub:'Content & amount verified',     time:'03/22 10:05'},
+      {s:'done',   name:'Dept. head review (Acting Mgr. Sato)',sub:'Compliance check complete',     time:'03/23 14:30'},
+      {s:'pending',name:'Final approval (Dept. Head Suzuki)',  sub:'Pending — 2 days elapsed',      time:'Due 3/26',warn:true},
+      {s:'waiting',name:'Accounting: bookkeeping',             sub:'Starts after prior step',       time:'—'},
+    ],
+    auditLabel:'Audit log', permLabel:'Permission levels',
+    audit:[
+      {time:'14:31:08',who:'[Agent]',          sys:true, text:'Delay risk detected. Suggestion generated. Not sent.'},
+      {time:'14:28:45',who:'T. Tanaka',         sys:false,text:'reviewed logistics task.'},
+      {time:'14:15:02',who:'Sec. Chief Yamada', sys:false,text:'added a comment.'},
+      {time:'13:50:30',who:'[Agent]',           sys:true, text:'3 risk tasks identified. Notifications not sent.'},
+    ],
+    perms:[['View','Everyone'],['Approve proposals','Section Chief+'],['External send','Division Chief+'],['Final approval','Dept. Head']],
+  },
+}
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let market = 'us'
+let activeTab = 'market'
+let jpLang = 'jp'
+let jpSelTask = 0
+
+// ── HELPERS ────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id)
+
+function el(tag, cls, html='') {
+  const e = document.createElement(tag)
+  if (cls) e.className = cls
+  if (html) e.innerHTML = html
+  return e
+}
+
+function swtch(on, colorCls='') {
+  return `<div class="switch ${on ? (colorCls || 'on') : ''}"></div>`
+}
+
+function slider(val, label, left, right) {
+  return `
+    <div>
+      <div class="flex justify-between items-center mb-1">
+        <span class="text-[10px] text-muted-foreground">${left}</span>
+        <span class="text-xs font-medium">${label}</span>
+        <span class="text-[10px] text-muted-foreground">${right}</span>
+      </div>
+      <input type="range" value="${val}" min="0" max="100" disabled style="cursor:default" />
+    </div>`
+}
+
+function selectEl(val, options) {
+  return `<select class="w-full border border-input rounded-md text-xs px-3 py-1.5 bg-background text-foreground" disabled>${options.map(o=>`<option ${o===val?'selected':''}>${o}</option>`).join('')}</select>`
+}
+
+function deltaRow(field) {
+  const usLive = market === 'us'
+  return `<div class="delta-row">
+    <span class="delta-us ${usLive?'live':''}">US → ${field.us}</span>
+    <span class="text-muted-foreground">·</span>
+    <span class="delta-jp ${!usLive?'live':''}">JP → ${field.jp}</span>
+  </div>`
+}
+
+function lockBadge(level) {
+  const map = {market:['lock-market','↑ market'],it:['lock-it','↑ IT admin'],ops:['lock-ops','↑ ops admin']}
+  const [cls, label] = map[level]
+  return `<span class="lock-badge ${cls}">${label}</span>`
+}
+
+function ctrlBlock({label, lock, inherited, note, body}) {
+  return `<div class="ctrl-block ${inherited?'inherited':''}">
+    <div class="ctrl-label">${label}${lock?lockBadge(lock):''}</div>
+    ${body}
+    ${note?`<div class="range-note">${note}</div>`:''}
+  </div>`
+}
+
+function sectionHead(label) {
+  return `<div class="section-head"><span>${label}</span><hr /></div>`
+}
+
+// ── PANEL CONTENT ──────────────────────────────────────────────────────────
+function renderMarketPanel(c) {
+  return `
+    ${sectionHead('Persona')}
+    ${ctrlBlock({label:'Voice register', body: slider(c.voice.val,'Professional','Casual','Formal') + deltaRow(c.voice)})}
+    ${ctrlBlock({label:'Communication tone', body: slider(c.tone.val, c.tone.label, 'Warm','Clinical') + deltaRow(c.tone)})}
+    ${ctrlBlock({label:'Directness', body: slider(c.directness.val, c.directness.label, 'Indirect','Direct') + deltaRow(c.directness)})}
+    ${ctrlBlock({label:'Hierarchy signalling', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Show role titles in agent messages (e.g. "部長" vs "Manager")</span>${swtch(c.hierarchy.on,'on-amber')}</div>${deltaRow(c.hierarchy)}`})}
+    ${ctrlBlock({label:'Face-saving language', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Rephrase alerts to avoid blame attribution</span>${swtch(c.facesaving.on,'on-amber')}</div>${deltaRow(c.facesaving)}`})}
+    ${sectionHead('Content')}
+    ${ctrlBlock({label:'UI language', body: selectEl(c.lang.val,['EN','JP','DE','FR','ZH']) + deltaRow(c.lang)})}
+    ${ctrlBlock({label:'Information density', body: slider(c.density.val, c.density.label, 'Minimal','Dense') + deltaRow(c.density)})}
+    ${ctrlBlock({label:'Space tokens', body: slider(c.space.val, c.space.label, 'Compact','Spacious') + deltaRow(c.space)})}
+    ${ctrlBlock({label:'Disclosure depth', body: slider(c.depth.val, c.depth.label, 'Progressive','Upfront') + deltaRow(c.depth)})}
+    ${ctrlBlock({label:'Date & number format', body: selectEl(c.datefmt.val,['MM/DD/YY','YYYY/MM/DD','DD/MM/YY']) + deltaRow(c.datefmt)})}
+    ${sectionHead('Governance defaults')}
+    ${ctrlBlock({label:'Agent action authority', body: selectEl(c.authority.val,['Autonomous','Suggest only','Require approval']) + deltaRow(c.authority)})}
+    ${ctrlBlock({label:'Approval chain visibility', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Show sign-off chain on all tasks by default</span>${swtch(c.approvalvis.on,'on-amber')}</div>${deltaRow(c.approvalvis)}`})}
+  `
+}
+
+function renderITPanel(c) {
+  return `
+    ${sectionHead('Infrastructure')}
+    ${ctrlBlock({label:'Data residency', note:'Legal constraint — cannot be overridden by org or user', body: selectEl(c.residency.val,['US-East-1','AP-NE-1 Tokyo','EU-West-1'])})}
+    ${ctrlBlock({label:'Audit log persistence', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Persistent right-panel audit log vs. on-demand</span>${swtch(c.auditlog.on,'on-amber')}</div>${deltaRow(c.auditlog)}`})}
+    ${ctrlBlock({label:'Log retention', note: market==='jp'?'JP financial regs require min. 7yr for approval records':undefined, body: selectEl(c.retention.val,['30d','90d','1yr','7yr'])})}
+    ${sectionHead('Governance — tighten only')}
+    ${ctrlBlock({label:'Agent action authority', lock:'market', note:'IT can tighten but cannot loosen past market default', body: selectEl(c.authority.val,['Autonomous','Suggest only','Require approval'])})}
+    ${ctrlBlock({label:'Escalation hard-block', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Block all external sends until chain is complete</span>${swtch(c.escalation.on,'on-amber')}</div>${deltaRow(c.escalation)}`})}
+    ${sectionHead('Access & identity')}
+    ${ctrlBlock({label:'SSO provider', body: selectEl('Okta',['Okta','Azure AD','SAML 2.0'])})}
+    ${ctrlBlock({label:'Language lock', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Lock UI language org-wide — prevents user overrides</span>${swtch(false)}</div>`})}
+  `
+}
+
+function renderOpsPanel(c) {
+  const chain = [
+    {dot:'bg-slate-300',name:'Initiator (任意)',role:'Step 1',indent:false},
+    {dot:'bg-amber-400',name:'Section Chief (係長)',role:'Step 2',indent:true},
+    {dot:'bg-amber-500',name:'Division Chief (課長)',role:'Step 3',indent:true},
+    {dot:'bg-blue-500', name:'Dept. Head (部長)',role:'Final',indent:true},
+  ]
+  const chainHTML = `<div class="border rounded-md divide-y text-xs overflow-hidden">
+    ${chain.map(n=>`<div class="flex items-center gap-2 px-3 py-2 bg-white">${n.indent?'<div class="w-3 shrink-0"></div>':''}<div class="w-2 h-2 rounded-full shrink-0 ${n.dot}"></div><span class="flex-1">${n.name}</span><span class="text-muted-foreground">${n.role}</span></div>`).join('')}
+  </div>`
+  return `
+    ${sectionHead('Approval hierarchy')}
+    ${ctrlBlock({label:'Minimum approver seniority', note:'Role titles sourced from HRIS sync', body: selectEl(c.seniority.val,['Any','係長+','課長+','部長+'])})}
+    ${ctrlBlock({label:'Approval chain composition', note:'Steps sourced from HRIS · last synced 2h ago', body: chainHTML})}
+    ${sectionHead('Persona — refine within market bounds')}
+    ${ctrlBlock({label:'Hierarchy signalling', lock:'market', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Can soften for this org but not disable entirely</span>${swtch(c.hierarchy.on,'on-amber')}</div>`})}
+    ${ctrlBlock({label:'Face-saving language', lock:'market', inherited: market==='jp', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">${market==='jp'?'Locked on for JP market':'Indirect framing for delays'}</span>${swtch(c.facesaving.on,'on-amber')}</div>`})}
+    ${sectionHead('Content')}
+    ${ctrlBlock({label:'Display language', note:'Overridable by user unless IT Admin has locked language', body: selectEl(c.lang.val,['EN','JP','DE','FR'])})}
+  `
+}
+
+function renderUserPanel(c) {
+  return `
+    ${sectionHead('Ergonomics')}
+    ${ctrlBlock({label:'Language preference', note:'Disabled if IT Admin has locked org language', body: selectEl(c.lang.val,['EN','JP','DE','FR'])})}
+    ${ctrlBlock({label:'Date & number format', body: selectEl(c.datefmt.val,['MM/DD/YY','YYYY/MM/DD','DD/MM/YY'])})}
+    ${ctrlBlock({label:'Disclosure preference', note:'Cannot go below market floor', body: slider(c.depth.val, c.depth.label, 'Progressive','Upfront')})}
+    ${sectionHead('Tone adjustment')}
+    ${ctrlBlock({label:'Tone nudge', lock:'market', note:'±15% range around market default', body: slider(30,'Neutral','Market min','+Warmer')})}
+    ${sectionHead('Notifications')}
+    ${ctrlBlock({label:'Approval reminders', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Receive reminders for pending approvals</span>${swtch(true,'on-green')}</div>`})}
+    ${sectionHead('Read-only — set above')}
+    ${ctrlBlock({label:'Agent authority', lock:'market', inherited:true, body: selectEl(c.authority.val,['Autonomous','Suggest only','Require approval'])})}
+    ${ctrlBlock({label:'Approval chain', lock:'ops', inherited:true, body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Chain composition & seniority thresholds</span>${swtch(c.approvalvis.on,'on-amber')}</div>`})}
+    ${ctrlBlock({label:'Data residency', lock:'it', inherited:true, body: selectEl(c.residency.val,['US-East-1','AP-NE-1 Tokyo','EU-West-1'])})}
+  `
+}
+
+// ── JP FRAME RENDER ────────────────────────────────────────────────────────
+function renderJPFrame() {
+  const s = STR[jpLang]
+
+  $('jp-frame-label').textContent = s.frameLabel
+  $('jp-sub').textContent = s.sub
+  $('jp-env').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block mr-1"></span>${s.env}`
+  $('jp-user').textContent = s.user
+  $('jp-avatar').textContent = s.avatar
+  $('jp-ws-label').textContent = s.wsLabel
+  $('jp-dept-label').textContent = s.deptLabel
+  $('jp-agent-label').textContent = s.agentLabel
+  $('jp-audit-label').textContent = s.auditLabel
+  $('jp-perm-label').textContent = s.permLabel
+
+  // chips
+  $('jp-chips').innerHTML = s.chips.map(c=>`<span class="badge badge-amber">${c}</span>`).join('')
+
+  // nav
+  $('jp-nav').innerHTML = s.nav.map((n,i)=>`<button class="btn ${i===0?'btn-secondary':'btn-ghost'} btn-sm ${i===0?'bg-amber-50 text-amber-800':''}">${n}</button>`).join('')
+
+  // sidebar nav
+  const badgeSets = [['3','destructive'],['7','warning'],['12','secondary'],[null,null]]
+  $('jp-sb-nav').innerHTML = s.nav.map((item,i)=>`
+    <div class="flex items-center justify-between mb-0.5">
+      <button class="btn ${i===0?'btn-secondary bg-amber-50 text-amber-800':'btn-ghost'} btn-sm flex-1 justify-start">${item}</button>
+      ${badgeSets[i][0]?`<span class="badge badge-${badgeSets[i][1]} ml-1" style="font-size:9px;padding:0 5px">${badgeSets[i][0]}</span>`:''}
+    </div>`).join('')
+
+  // depts
+  $('jp-depts').innerHTML = s.depts.map((d,i)=>`<div class="flex items-center justify-between mb-0.5"><button class="btn ${i===0?'btn-secondary bg-amber-50 text-amber-800':'btn-ghost'} btn-sm flex-1 justify-${i===0?'start':'between'}">${d}${i>0?`<span class="text-muted-foreground text-[10px]">${['4','2','3'][i-1]}</span>`:''}</button></div>`).join('')
+
+  // agent lines
+  $('jp-agent-lines').innerHTML = s.agentLines.map((line,i)=>`<p class="text-xs leading-6 ${i===0?'text-green-600 flex items-center gap-1':i===1?'text-amber-600':'text-muted-foreground'}">${i===0?'<span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>':''}${line}</p>`).join('')
+
+  // main area
+  const kpiCols = s.kpis.length === 4 ? 'grid-cols-4' : 'grid-cols-3'
+  const tasksHTML = s.tasks.map((t,i)=>`
+    <div class="task-card bg-white border rounded-lg p-3 ${jpSelTask===i?'selected-jp':''}" onclick="jpSelectTask(${i})">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="badge badge-${t.hi?'destructive':'warning'}">${t.risk}</span>
+        <span class="text-sm font-medium flex-1 truncate">${t.name}</span>
+      </div>
+      <div class="flex flex-wrap gap-1.5 items-center">
+        <span class="badge badge-secondary">${t.dept}</span>
+        <span class="text-[10px] text-muted-foreground">${t.owner}</span>
+        <span class="text-[10px] text-muted-foreground">${t.due}</span>
+        <span class="text-[10px] font-medium ${t.remDanger?'text-red-600':'text-amber-600'}">${t.rem}</span>
+      </div>
+    </div>`).join('')
+
+  const chainHTML = s.chain.map(step=>`
+    <div class="flex items-start gap-3 py-2.5 ${step.warn?'bg-amber-50 -mx-4 px-4':''}">
+      <div class="w-2.5 h-2.5 rounded-full shrink-0 mt-1 chain-dot-${step.s}"></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-xs font-medium truncate">${step.name}</p>
+        <p class="text-[10px] mt-0.5 ${step.warn?'text-amber-600':'text-muted-foreground'}">${step.sub}</p>
+      </div>
+      <span class="text-[10px] shrink-0 ${step.warn?'text-amber-600 font-medium':'text-muted-foreground'}">${step.time}</span>
+    </div>`).join('')
+
+  $('jp-main').innerHTML = `
+    <div class="grid ${kpiCols} gap-2">
+      ${s.kpis.map(k=>`<div class="bg-white border rounded-lg p-2.5"><p class="text-[9px] uppercase tracking-widest text-muted-foreground mb-1 leading-tight">${k.l}</p><p class="text-xl font-light ${k.danger?'text-red-600':k.warn?'text-amber-600':''}">${k.v}</p><p class="text-[9px] text-muted-foreground mt-0.5">${k.s}</p></div>`).join('')}
+    </div>
+    <div class="space-y-2">
+      <div class="flex items-center justify-between">
+        <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">${s.sectionTitle}</p>
+        <span class="text-[10px] text-muted-foreground">${s.sectionNote}</span>
+      </div>
+      ${tasksHTML}
+    </div>
+    <div class="alert alert-amber">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="badge badge-default" style="background:#d97706;font-size:9px">AI</span>
+        <div>
+          <span class="font-semibold text-amber-800 text-sm">${s.agentTitle}</span>
+          <span class="text-[10px] text-amber-600 ml-2">${s.agentSub}</span>
+        </div>
+      </div>
+      <p class="text-xs text-amber-800 leading-relaxed mb-2.5" style="white-space:pre-line">${s.agentBody}</p>
+      <div class="flex gap-2 flex-wrap">
+        ${s.agentBtns.map((btn,i)=>`<button class="btn btn-sm ${i===0?'btn-amber':'btn-outline'}" ${i===0?'style="border-color:#d97706;color:#d97706"':''}>${btn}</button>`).join('')}
+      </div>
+    </div>
+    <div class="bg-white border rounded-lg p-4">
+      <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">${s.chainTitle}</p>
+      <div class="divide-y">${chainHTML}</div>
+    </div>
+  `
+
+  // audit
+  $('jp-audit').innerHTML = s.audit.map(e=>`
+    <div class="py-2">
+      <p class="text-[10px] text-muted-foreground mb-0.5">${e.time}</p>
+      <p class="text-[10px] leading-relaxed"><span class="${e.sys?'text-blue-500':'text-amber-600'}">${e.who} </span><span class="text-muted-foreground">${e.text}</span></p>
+    </div>`).join('')
+
+  // perms
+  $('jp-perms').innerHTML = s.perms.map(([role,who])=>`<div class="flex justify-between items-center"><span class="text-[10px] text-muted-foreground">${role}</span><span class="text-[10px] font-medium">${who}</span></div>`).join('')
+
+  // lang toggle
+  $('lt-jp').className = jpLang==='jp' ? 'text-amber-600 font-semibold' : 'text-muted-foreground'
+  $('lt-en').className = jpLang==='en' ? 'text-amber-600 font-semibold' : 'text-muted-foreground'
+}
+
+// ── CONFIG PANEL ───────────────────────────────────────────────────────────
+function renderPanel() {
+  const c = CFG[market]
+  const panelContent = $('panel-content')
+  const renderers = {market: renderMarketPanel, it: renderITPanel, ops: renderOpsPanel, user: renderUserPanel}
+  panelContent.innerHTML = renderers[activeTab](c)
+}
+
+// ── CONTROLS ───────────────────────────────────────────────────────────────
+function setMarket(m) {
+  market = m
+  $('frames-container').style.transform = m==='jp' ? 'translateX(-50%)' : 'translateX(0)'
+  $('btn-us').classList.toggle('active', m==='us')
+  $('btn-jp').classList.toggle('active', m==='jp')
+  renderPanel()
+  renderJPFrame()
+}
+
+function setTab(tab, btn) {
+  activeTab = tab
+  document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'))
+  btn.classList.add('active')
+  renderPanel()
+}
+
+function toggleJpLang() {
+  jpLang = jpLang==='jp' ? 'en' : 'jp'
+  renderJPFrame()
+}
+
+function jpSelectTask(i) {
+  jpSelTask = i
+  renderJPFrame()
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+renderPanel()
+renderJPFrame()
+</script>
+</body>
+</html>
