@@ -4,320 +4,274 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FlowCore — Localisation Config</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        border: 'hsl(214.3 31.8% 91.4%)',
-        input:  'hsl(214.3 31.8% 91.4%)',
-        ring:   'hsl(222.2 84% 4.9%)',
-        background: 'hsl(0 0% 100%)',
-        foreground:  'hsl(222.2 84% 4.9%)',
-        muted: { DEFAULT:'hsl(210 40% 96.1%)', foreground:'hsl(215.4 16.3% 46.9%)' },
-        destructive: { DEFAULT:'hsl(0 84.2% 60.2%)', foreground:'hsl(210 40% 98%)' },
-        secondary: { DEFAULT:'hsl(210 40% 96.1%)', foreground:'hsl(222.2 47.4% 11.2%)' },
-        accent: { DEFAULT:'hsl(210 40% 96.1%)', foreground:'hsl(222.2 47.4% 11.2%)' },
-        card: { DEFAULT:'hsl(0 0% 100%)', foreground:'hsl(222.2 84% 4.9%)' },
-      },
-      fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','sans-serif'] }
-    }
-  }
-}
-</script>
+<style>/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-divide-y-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}}@layer theme{:root,:host{--font-sans:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--color-red-50:oklch(97.1% .013 17.38);--color-red-100:oklch(93.6% .032 17.717);--color-red-200:oklch(88.5% .062 18.334);--color-red-600:oklch(57.7% .245 27.325);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-100:oklch(96.2% .059 95.617);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-300:oklch(87.9% .169 91.605);--color-amber-400:oklch(82.8% .189 84.429);--color-amber-500:oklch(76.9% .188 70.08);--color-amber-600:oklch(66.6% .179 58.318);--color-amber-700:oklch(55.5% .163 48.998);--color-amber-800:oklch(47.3% .137 46.201);--color-green-50:oklch(98.2% .018 155.826);--color-green-200:oklch(92.5% .084 155.995);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-blue-50:oklch(97% .014 254.604);--color-blue-100:oklch(93.2% .032 255.585);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-300:oklch(80.9% .105 251.813);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-700:oklch(48.8% .243 264.376);--color-blue-800:oklch(42.4% .199 265.638);--color-violet-50:oklch(96.9% .016 293.756);--color-violet-200:oklch(89.4% .057 293.283);--color-violet-700:oklch(49.1% .27 292.581);--color-slate-50:oklch(98.4% .003 247.858);--color-slate-100:oklch(96.8% .007 247.896);--color-slate-200:oklch(92.9% .013 255.508);--color-slate-300:oklch(86.9% .022 252.894);--color-slate-400:oklch(70.4% .04 256.788);--color-slate-500:oklch(55.4% .046 257.417);--color-slate-600:oklch(44.6% .043 257.281);--color-slate-700:oklch(37.2% .044 257.287);--color-slate-800:oklch(27.9% .041 260.031);--color-slate-900:oklch(20.8% .042 265.755);--color-white:#fff;--spacing:.25rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--font-weight-light:300;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--tracking-widest:.1em;--leading-tight:1.25;--leading-snug:1.375;--leading-relaxed:1.625;--radius-md:.375rem;--radius-lg:.5rem;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab, red, red)){::placeholder{color:color-mix(in oklab, currentcolor 50%, transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.pointer-events-none{pointer-events:none}.visible{visibility:visible}.end{inset-inline-end:var(--spacing)}.-mx-4{margin-inline:calc(var(--spacing) * -4)}.mx-3{margin-inline:calc(var(--spacing) * 3)}.my-3{margin-block:calc(var(--spacing) * 3)}.mt-0\.5{margin-top:calc(var(--spacing) * .5)}.mt-1{margin-top:calc(var(--spacing) * 1)}.mt-1\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-5{margin-top:calc(var(--spacing) * 5)}.mr-1{margin-right:calc(var(--spacing) * 1)}.mb-0\.5{margin-bottom:calc(var(--spacing) * .5)}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-1\.5{margin-bottom:calc(var(--spacing) * 1.5)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-2\.5{margin-bottom:calc(var(--spacing) * 2.5)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-3\.5{margin-bottom:calc(var(--spacing) * 3.5)}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.h-0\.5{height:calc(var(--spacing) * .5)}.h-1\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-2\.5{height:calc(var(--spacing) * 2.5)}.h-7{height:calc(var(--spacing) * 7)}.h-full{height:100%}.h-screen{height:100vh}.w-1\.5{width:calc(var(--spacing) * 1.5)}.w-2{width:calc(var(--spacing) * 2)}.w-2\.5{width:calc(var(--spacing) * 2.5)}.w-3{width:calc(var(--spacing) * 3)}.w-4{width:calc(var(--spacing) * 4)}.w-7{width:calc(var(--spacing) * 7)}.w-44{width:calc(var(--spacing) * 44)}.w-48{width:calc(var(--spacing) * 48)}.w-72{width:calc(var(--spacing) * 72)}.w-full{width:100%}.min-w-0{min-width:calc(var(--spacing) * 0)}.flex-1{flex:1}.shrink-0{flex-shrink:0}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-default{cursor:default}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.items-start{align-items:flex-start}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-0\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:calc(var(--spacing) * 1)}.gap-1\.5{gap:calc(var(--spacing) * 1.5)}.gap-2{gap:calc(var(--spacing) * 2)}.gap-3{gap:calc(var(--spacing) * 3)}:where(.space-y-1\.5>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 1.5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-y-reverse)))}:where(.divide-y>:not(:last-child)){--tw-divide-y-reverse:0;border-bottom-style:var(--tw-border-style);border-top-style:var(--tw-border-style);border-top-width:calc(1px * var(--tw-divide-y-reverse));border-bottom-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)))}:where(.divide-slate-50>:not(:last-child)){border-color:var(--color-slate-50)}:where(.divide-slate-100>:not(:last-child)){border-color:var(--color-slate-100)}.truncate{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-full{border-radius:3.40282e38px}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.border-none{--tw-border-style:none;border-style:none}.border-amber-200{border-color:var(--color-amber-200)}.border-amber-300{border-color:var(--color-amber-300)}.border-blue-200{border-color:var(--color-blue-200)}.border-blue-300{border-color:var(--color-blue-300)}.border-green-200{border-color:var(--color-green-200)}.border-red-200{border-color:var(--color-red-200)}.border-slate-100{border-color:var(--color-slate-100)}.border-slate-200{border-color:var(--color-slate-200)}.border-slate-300{border-color:var(--color-slate-300)}.border-violet-200{border-color:var(--color-violet-200)}.bg-amber-50{background-color:var(--color-amber-50)}.bg-amber-100{background-color:var(--color-amber-100)}.bg-amber-400{background-color:var(--color-amber-400)}.bg-amber-500{background-color:var(--color-amber-500)}.bg-amber-600{background-color:var(--color-amber-600)}.bg-blue-50{background-color:var(--color-blue-50)}.bg-blue-100{background-color:var(--color-blue-100)}.bg-blue-500{background-color:var(--color-blue-500)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-green-50{background-color:var(--color-green-50)}.bg-green-500{background-color:var(--color-green-500)}.bg-red-50{background-color:var(--color-red-50)}.bg-red-100{background-color:var(--color-red-100)}.bg-slate-50{background-color:var(--color-slate-50)}.bg-slate-100{background-color:var(--color-slate-100)}.bg-slate-200{background-color:var(--color-slate-200)}.bg-slate-300{background-color:var(--color-slate-300)}.bg-transparent{background-color:#0000}.bg-violet-50{background-color:var(--color-violet-50)}.bg-white{background-color:var(--color-white)}.p-2\.5{padding:calc(var(--spacing) * 2.5)}.p-3{padding:calc(var(--spacing) * 3)}.p-4{padding:calc(var(--spacing) * 4)}.px-1\.5{padding-inline:calc(var(--spacing) * 1.5)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.py-0\.5{padding-block:calc(var(--spacing) * .5)}.py-1{padding-block:calc(var(--spacing) * 1)}.py-1\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-2\.5{padding-block:calc(var(--spacing) * 2.5)}.py-3{padding-block:calc(var(--spacing) * 3)}.pt-4{padding-top:calc(var(--spacing) * 4)}.pr-7{padding-right:calc(var(--spacing) * 7)}.pb-2\.5{padding-bottom:calc(var(--spacing) * 2.5)}.pb-3{padding-bottom:calc(var(--spacing) * 3)}.text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.text-\[9px\]{font-size:9px}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.leading-6{--tw-leading:calc(var(--spacing) * 6);line-height:calc(var(--spacing) * 6)}.leading-relaxed{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-snug{--tw-leading:var(--leading-snug);line-height:var(--leading-snug)}.leading-tight{--tw-leading:var(--leading-tight);line-height:var(--leading-tight)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-light{--tw-font-weight:var(--font-weight-light);font-weight:var(--font-weight-light)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-widest{--tw-tracking:var(--tracking-widest);letter-spacing:var(--tracking-widest)}.whitespace-nowrap{white-space:nowrap}.text-amber-600{color:var(--color-amber-600)}.text-amber-700{color:var(--color-amber-700)}.text-amber-800{color:var(--color-amber-800)}.text-blue-500{color:var(--color-blue-500)}.text-blue-600{color:var(--color-blue-600)}.text-blue-700{color:var(--color-blue-700)}.text-blue-800{color:var(--color-blue-800)}.text-green-600{color:var(--color-green-600)}.text-green-700{color:var(--color-green-700)}.text-red-600{color:var(--color-red-600)}.text-slate-300{color:var(--color-slate-300)}.text-slate-400{color:var(--color-slate-400)}.text-slate-500{color:var(--color-slate-500)}.text-slate-600{color:var(--color-slate-600)}.text-slate-700{color:var(--color-slate-700)}.text-slate-800{color:var(--color-slate-800)}.text-slate-900{color:var(--color-slate-900)}.text-violet-700{color:var(--color-violet-700)}.text-white{color:var(--color-white)}.uppercase{text-transform:uppercase}.opacity-40{opacity:.4}.outline{outline-style:var(--tw-outline-style);outline-width:1px}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-colors{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.first\:mt-1:first-child{margin-top:calc(var(--spacing) * 1)}@media (hover:hover){.hover\:border-slate-300:hover{border-color:var(--color-slate-300)}.hover\:bg-amber-50:hover{background-color:var(--color-amber-50)}.hover\:bg-amber-700:hover{background-color:var(--color-amber-700)}.hover\:bg-blue-50:hover{background-color:var(--color-blue-50)}.hover\:bg-blue-100:hover{background-color:var(--color-blue-100)}.hover\:bg-slate-50:hover{background-color:var(--color-slate-50)}.hover\:underline:hover{text-decoration-line:underline}}@media (min-width:80rem){.xl\:block{display:block}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-divide-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-tracking{syntax:"*";inherits:false}@property --tw-outline-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}</style>
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; }
-
-  /* Scrollbar */
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
   ::-webkit-scrollbar { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 2px; }
-
-  /* Slider */
-  input[type=range] { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: #e2e8f0; outline: none; width: 100%; cursor: default; }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: white; border: 2px solid #64748b; cursor: default; }
-
-  /* Tab underline active */
-  .tab-trigger { border-bottom: 2px solid transparent; transition: border-color .15s, color .15s; }
-  .tab-trigger.active { border-color: #0f172a; color: #0f172a; }
-
-  /* Market btn active */
-  .mkt-btn-us.active { background: #eff6ff; border-color: #93c5fd; color: #1e40af; }
-  .mkt-btn-jp.active { background: #fffbeb; border-color: #fcd34d; color: #92400e; }
-
-  /* Card hover */
-  .task-card { transition: border-color .15s; cursor: pointer; }
-  .task-card:hover { border-color: #94a3b8; }
-  .task-card.selected-jp { border-color: #f59e0b; box-shadow: 0 0 0 1px #fde68a; }
-
-  /* Switch */
-  .switch { display:inline-flex; align-items:center; width:36px; height:20px; border-radius:9999px; background:#e2e8f0; position:relative; flex-shrink:0; }
-  .switch.on { background:#0f172a; }
-  .switch.on-amber { background:#d97706; }
-  .switch.on-green { background:#16a34a; }
-  .switch::after { content:''; position:absolute; width:14px; height:14px; border-radius:50%; background:white; left:3px; transition:left .15s; box-shadow:0 1px 2px rgba(0,0,0,.2); }
+  input[type=range] { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: #e2e8f0; outline: none; width: 100%; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: white; border: 2px solid #475569; }
+  select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; background-color: white; }
+  .switch { display:inline-block; width:36px; height:20px; border-radius:10px; background:#e2e8f0; position:relative; flex-shrink:0; }
+  .switch::after { content:''; position:absolute; width:14px; height:14px; border-radius:50%; background:white; top:3px; left:3px; transition:left .15s; box-shadow:0 1px 3px rgba(0,0,0,.2); }
+  .switch.on         { background:#1e293b; }
+  .switch.on-amber   { background:#d97706; }
+  .switch.on-green   { background:#16a34a; }
   .switch.on::after, .switch.on-amber::after, .switch.on-green::after { left:19px; }
-
-  /* Animate frame slide */
-  #frames-container { transition: transform .45s cubic-bezier(.4,0,.2,1); }
-
-  /* Select */
-  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; padding-right: 28px !important; }
-
-  .lock-badge { font-size:10px; padding:1px 6px; border-radius:3px; border-width:1px; border-style:solid; }
-  .lock-market { background:#f5f3ff; color:#7c3aed; border-color:#ddd6fe; }
-  .lock-it     { background:#fef2f2; color:#dc2626; border-color:#fecaca; }
-  .lock-ops    { background:#eff6ff; color:#2563eb; border-color:#bfdbfe; }
-
-  .section-head { display:flex; align-items:center; gap:8px; margin-top:20px; margin-bottom:12px; }
-  .section-head:first-child { margin-top:4px; }
-  .section-head span { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; white-space:nowrap; }
-  .section-head hr { flex:1; border:none; border-top:1px solid #f1f5f9; margin:0; }
-
-  .ctrl-block { margin-bottom:14px; }
-  .ctrl-block.inherited { opacity:.4; pointer-events:none; }
-  .ctrl-label { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:6px; font-size:12px; color:#64748b; }
-
-  .delta-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:5px; font-size:11px; }
-  .delta-us { color:#93c5fd; }
+  #frames-container { transition: transform 0.42s cubic-bezier(0.4,0,0.2,1); }
+  .delta-us { color:#93c5fd; transition: color .2s, font-weight .2s; }
   .delta-us.live { color:#2563eb; font-weight:600; }
-  .delta-jp { color:#fcd34d; }
+  .delta-jp { color:#fde68a; transition: color .2s, font-weight .2s; }
   .delta-jp.live { color:#d97706; font-weight:600; }
-
-  .range-note { font-size:10px; color:#94a3b8; background:#f8fafc; border:1px solid #f1f5f9; border-radius:4px; padding:3px 8px; margin-top:4px; line-height:1.5; }
-
-  /* Badge */
-  .badge { display:inline-flex; align-items:center; font-size:10px; padding:1px 7px; border-radius:9999px; font-weight:500; }
-  .badge-default   { background:#0f172a; color:white; }
-  .badge-secondary { background:#f1f5f9; color:#475569; }
-  .badge-destructive { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
-  .badge-warning   { background:#fffbeb; color:#92400e; border:1px solid #fde68a; }
-  .badge-blue      { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; }
-  .badge-green     { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
-  .badge-amber     { background:#fffbeb; color:#92400e; border:1px solid #fde68a; }
-  .badge-outline   { background:transparent; color:#64748b; border:1px solid #e2e8f0; }
-
-  /* Alert */
-  .alert { border-radius:8px; border-width:1px; border-style:solid; padding:12px 14px; }
-  .alert-blue  { background:#eff6ff; border-color:#bfdbfe; }
-  .alert-amber { background:#fffbeb; border-color:#fde68a; }
-  .alert-green { background:#f0fdf4; border-color:#bbf7d0; }
-
-  /* Button */
-  .btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; font-size:12px; font-weight:500; border-radius:6px; border:1px solid; cursor:pointer; transition:background .13s, border-color .13s; padding:0 12px; height:30px; }
-  .btn-sm { height:26px; font-size:11px; padding:0 10px; }
-  .btn-default { background:#0f172a; color:white; border-color:#0f172a; }
-  .btn-default:hover { background:#1e293b; }
-  .btn-outline { background:white; color:#374151; border-color:#e2e8f0; }
-  .btn-outline:hover { background:#f8fafc; }
-  .btn-ghost { background:transparent; border-color:transparent; color:#374151; }
-  .btn-ghost:hover { background:#f1f5f9; }
-  .btn-secondary { background:#f1f5f9; color:#374151; border-color:#e2e8f0; }
-  .btn-secondary:hover { background:#e2e8f0; }
-  .btn-amber { background:#d97706; color:white; border-color:#d97706; }
-  .btn-amber:hover { background:#b45309; }
-
-  /* Chain dot */
-  .chain-dot-done { background:#22c55e; }
-  .chain-dot-pend { background:#f59e0b; }
-  .chain-dot-wait { background:#e2e8f0; border:1px solid #cbd5e1; }
+  .tab-trigger { border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
+  .tab-trigger.active { color: #0f172a; border-bottom-color: #0f172a; }
+  .card-sel-jp { border-color: #f59e0b !important; box-shadow: 0 0 0 1px #fde68a; }
 </style>
 </head>
-<body class="bg-background text-foreground h-screen overflow-hidden flex">
+<body class="bg-white text-slate-900 flex h-screen overflow-hidden">
 
-<!-- ═══════════════════════════════════════════════════════
-     CONFIG PANEL
-════════════════════════════════════════════════════════ -->
-<div class="w-72 shrink-0 h-screen border-r bg-white flex flex-col overflow-hidden">
+<!-- ═══ CONFIG PANEL ═══ -->
+<div class="w-72 shrink-0 h-screen border-r border-slate-200 bg-white flex flex-col overflow-hidden">
 
   <!-- Market selector -->
-  <div class="px-4 pt-4 pb-3 border-b">
-    <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-3">FlowCore · Localisation Config</p>
+  <div class="px-4 pt-4 pb-3 border-b border-slate-200 shrink-0">
+    <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2.5">FlowCore · Localisation Config</p>
     <div class="grid grid-cols-2 gap-2">
-      <button onclick="setMarket('us')" id="btn-us" class="btn btn-outline mkt-btn-us active justify-start gap-2">
-        🇺🇸 <span>United States</span>
+      <button id="btn-us" onclick="setMarket('us')"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all bg-blue-50 border-blue-300 text-blue-800">
+        🇺🇸 United States
       </button>
-      <button onclick="setMarket('jp')" id="btn-jp" class="btn btn-outline mkt-btn-jp justify-start gap-2">
-        🇯🇵 <span>日本</span>
+      <button id="btn-jp" onclick="setMarket('jp')"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all bg-white border-slate-200 text-slate-600 hover:bg-slate-50">
+        🇯🇵 日本
       </button>
     </div>
   </div>
 
   <!-- Persona tabs -->
-  <div class="flex border-b shrink-0">
-    <button class="tab-trigger active flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('market',this)">Market</button>
-    <button class="tab-trigger flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('it',this)">IT Admin</button>
-    <button class="tab-trigger flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('ops',this)">Ops</button>
-    <button class="tab-trigger flex-1 text-[11px] font-medium py-2.5 text-muted-foreground" onclick="setTab('user',this)">User</button>
+  <div class="flex border-b border-slate-200 shrink-0">
+    <button class="tab-trigger active flex-1 py-2.5 text-[11px] font-medium text-slate-400 bg-transparent border-none cursor-pointer" onclick="setTab('market',this)">Market</button>
+    <button class="tab-trigger flex-1 py-2.5 text-[11px] font-medium text-slate-400 bg-transparent border-none cursor-pointer" onclick="setTab('it',this)">IT Admin</button>
+    <button class="tab-trigger flex-1 py-2.5 text-[11px] font-medium text-slate-400 bg-transparent border-none cursor-pointer" onclick="setTab('ops',this)">Ops</button>
+    <button class="tab-trigger flex-1 py-2.5 text-[11px] font-medium text-slate-400 bg-transparent border-none cursor-pointer" onclick="setTab('user',this)">User</button>
   </div>
 
-  <!-- Panel content -->
-  <div class="flex-1 overflow-y-auto">
-    <div class="px-4 py-3" id="panel-content"></div>
+  <!-- Scrollable panel -->
+  <div id="panel-scroll" class="flex-1 overflow-y-auto px-4 py-3">
+    <div id="panel-content"></div>
   </div>
 
-  <div class="px-4 py-2 border-t shrink-0">
-    <p class="text-[10px] text-muted-foreground">FlowCore · Market config · Design exercise</p>
+  <div class="px-4 py-2 border-t border-slate-100 shrink-0">
+    <p class="text-[10px] text-slate-300">FlowCore · Market config · Design exercise</p>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     SLIDING PRODUCT FRAMES
-════════════════════════════════════════════════════════ -->
+<!-- ═══ FRAMES ═══ -->
 <div class="flex-1 overflow-hidden h-screen">
   <div id="frames-container" class="flex h-full" style="width:200%">
 
     <!-- US FRAME -->
-    <div class="h-full overflow-hidden flex flex-col" style="width:50%">
-      <div class="px-5 pt-4 pb-2 bg-white border-b shrink-0">
+    <div class="flex flex-col h-full overflow-hidden" style="width:50%">
+      <div class="px-5 pt-4 pb-2.5 bg-white border-b border-slate-200 shrink-0">
         <div class="flex items-center gap-2 mb-2">
           <div class="w-4 h-0.5 rounded-full bg-blue-500"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">United States · English</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">United States · English</span>
         </div>
         <div class="flex flex-wrap gap-1.5">
-          <span class="badge badge-blue">Agent acts first, you review later</span>
-          <span class="badge badge-blue">Progressive disclosure</span>
-          <span class="badge badge-blue">Direct tone</span>
+          <span class="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">Agent acts first, you review later</span>
+          <span class="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">Progressive disclosure</span>
+          <span class="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">Direct tone</span>
         </div>
       </div>
       <!-- US topbar -->
-      <div class="flex items-center justify-between px-4 py-2 border-b bg-white shrink-0">
-        <div class="flex items-center gap-2">
+      <div class="flex items-center justify-between px-4 py-2 border-b border-slate-200 bg-white shrink-0 gap-3">
+        <div class="flex items-center gap-2 shrink-0">
           <div class="w-2 h-2 rounded-full bg-blue-500"></div>
           <span class="font-semibold text-sm">FlowCore</span>
         </div>
         <nav class="flex gap-0.5">
-          <button class="btn btn-secondary btn-sm">Tasks</button>
-          <button class="btn btn-ghost btn-sm">Workflows</button>
-          <button class="btn btn-ghost btn-sm">Reports</button>
-          <button class="btn btn-ghost btn-sm">Settings</button>
+          <button class="px-3 py-1.5 rounded-md text-xs font-medium bg-slate-100 text-slate-700">Tasks</button>
+          <button class="px-3 py-1.5 rounded-md text-xs text-slate-500 hover:bg-slate-50">Workflows</button>
+          <button class="px-3 py-1.5 rounded-md text-xs text-slate-500 hover:bg-slate-50">Reports</button>
+          <button class="px-3 py-1.5 rounded-md text-xs text-slate-500 hover:bg-slate-50">Settings</button>
         </nav>
-        <div class="flex items-center gap-2">
-          <span class="text-xs text-muted-foreground">James D. · Ops Lead</span>
-          <div class="w-7 h-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-medium">JD</div>
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="text-xs text-slate-400 hidden xl:block">James D. · Ops Lead</span>
+          <div class="w-7 h-7 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-semibold">JD</div>
         </div>
       </div>
       <div class="flex flex-1 overflow-hidden">
         <!-- US sidebar -->
-        <div class="w-44 shrink-0 border-r bg-white py-2 overflow-y-auto flex flex-col gap-0">
+        <div class="w-44 shrink-0 border-r border-slate-200 bg-white py-2 overflow-y-auto">
           <div class="px-3 mb-2">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">Workspace</p>
-            <button class="btn btn-secondary btn-sm w-full justify-between mb-0.5">Tasks <span class="badge badge-destructive" style="font-size:9px;padding:0 5px">3</span></button>
-            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Workflows <span class="badge badge-warning" style="font-size:9px;padding:0 5px">7</span></button>
-            <button class="btn btn-ghost btn-sm w-full justify-start mb-0.5">Reports</button>
-            <button class="btn btn-ghost btn-sm w-full justify-start mb-0.5">Settings</button>
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1.5">Workspace</p>
+            <div class="flex items-center justify-between px-2 py-1.5 rounded-md bg-slate-100 text-slate-700 font-medium text-xs mb-0.5">
+              <span>Tasks</span><span class="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded-full font-semibold">3</span>
+            </div>
+            <div class="flex items-center justify-between px-2 py-1.5 rounded-md text-slate-500 text-xs mb-0.5">
+              <span>Workflows</span><span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full font-semibold">7</span>
+            </div>
+            <div class="px-2 py-1.5 rounded-md text-slate-500 text-xs mb-0.5">Reports</div>
+            <div class="px-2 py-1.5 rounded-md text-slate-500 text-xs mb-0.5">Settings</div>
           </div>
-          <hr class="mx-3 border-border mb-2" />
+          <hr class="border-slate-100 mx-3 mb-2" />
           <div class="px-3 mb-2">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">Departments</p>
-            <button class="btn btn-secondary btn-sm w-full justify-start mb-0.5">All</button>
-            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Procurement <span class="text-muted-foreground text-[10px]">4</span></button>
-            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Logistics <span class="text-muted-foreground text-[10px]">2</span></button>
-            <button class="btn btn-ghost btn-sm w-full justify-between mb-0.5">Finance <span class="text-muted-foreground text-[10px]">3</span></button>
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1.5">Departments</p>
+            <div class="px-2 py-1.5 rounded-md bg-slate-100 text-slate-700 font-medium text-xs mb-0.5">All</div>
+            <div class="flex justify-between px-2 py-1.5 rounded-md text-slate-500 text-xs mb-0.5"><span>Procurement</span><span class="text-slate-400">4</span></div>
+            <div class="flex justify-between px-2 py-1.5 rounded-md text-slate-500 text-xs mb-0.5"><span>Logistics</span><span class="text-slate-400">2</span></div>
+            <div class="flex justify-between px-2 py-1.5 rounded-md text-slate-500 text-xs mb-0.5"><span>Finance</span><span class="text-slate-400">3</span></div>
           </div>
-          <hr class="mx-3 border-border mb-2" />
+          <hr class="border-slate-100 mx-3 mb-2" />
           <div class="px-3">
-            <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">FlowAgent</p>
-            <p class="text-xs text-green-600 leading-6 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>Active · autonomous</p>
-            <p class="text-xs text-muted-foreground leading-6">3 actions taken today</p>
+            <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1.5">FlowAgent</p>
+            <p class="text-xs text-green-600 leading-6 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block shrink-0"></span>Active · autonomous</p>
+            <p class="text-xs text-slate-400 leading-6">3 actions taken today</p>
           </div>
         </div>
         <!-- US main -->
-        <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+        <div class="flex-1 overflow-y-auto p-4 bg-slate-50 flex flex-col gap-3">
           <div class="grid grid-cols-3 gap-3">
-            <div class="bg-white border rounded-lg p-3"><p class="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">On track</p><p class="text-2xl font-light text-green-600">84%</p><p class="text-[10px] text-muted-foreground mt-0.5">↑ 6% this week</p></div>
-            <div class="bg-white border rounded-lg p-3"><p class="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Handled by agent</p><p class="text-2xl font-light">12</p><p class="text-[10px] text-muted-foreground mt-0.5">this week</p></div>
-            <div class="bg-white border rounded-lg p-3"><p class="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Awaiting you</p><p class="text-2xl font-light text-amber-600">3</p><p class="text-[10px] text-muted-foreground mt-0.5">needs review</p></div>
+            <div class="bg-white border border-slate-200 rounded-lg p-3"><p class="text-[9px] font-semibold uppercase tracking-widest text-slate-400 mb-1">On track</p><p class="text-2xl font-light text-green-600">84%</p><p class="text-[10px] text-slate-400 mt-0.5">↑ 6% this week</p></div>
+            <div class="bg-white border border-slate-200 rounded-lg p-3"><p class="text-[9px] font-semibold uppercase tracking-widest text-slate-400 mb-1">Handled by agent</p><p class="text-2xl font-light text-slate-800">12</p><p class="text-[10px] text-slate-400 mt-0.5">this week</p></div>
+            <div class="bg-white border border-slate-200 rounded-lg p-3"><p class="text-[9px] font-semibold uppercase tracking-widest text-slate-400 mb-1">Awaiting you</p><p class="text-2xl font-light text-amber-600">3</p><p class="text-[10px] text-slate-400 mt-0.5">needs review</p></div>
           </div>
-          <div class="alert alert-blue">
-            <div class="flex items-center gap-2 mb-1.5"><span class="badge badge-default" style="font-size:9px">AI</span><span class="font-semibold text-blue-800 text-sm">FlowAgent — 3 actions taken</span></div>
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="text-[10px] font-semibold bg-blue-600 text-white px-2 py-0.5 rounded-full">AI</span>
+              <span class="font-semibold text-blue-800 text-sm">FlowAgent — 3 actions taken</span>
+            </div>
             <p class="text-xs text-blue-700 leading-relaxed mb-2.5">Sent reminders to Lisa (Procurement) and Marcus (Logistics). Escalated Q1 materials approval to dept head.</p>
-            <div class="flex gap-2"><button class="btn btn-outline btn-sm" style="border-color:#93c5fd;color:#1d4ed8">See full log</button><button class="btn btn-ghost btn-sm text-blue-600">Undo last action</button></div>
+            <div class="flex gap-2">
+              <button class="px-3 py-1.5 rounded-md text-xs font-medium border border-blue-300 text-blue-700 bg-white hover:bg-blue-50">See full log</button>
+              <button class="px-3 py-1.5 rounded-md text-xs text-blue-600 hover:bg-blue-100">Undo last action</button>
+            </div>
           </div>
           <div>
             <div class="flex items-center justify-between mb-2">
-              <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Your tasks</p>
-              <div class="flex gap-1"><span class="badge badge-blue">All</span><span class="badge badge-outline">Urgent</span><span class="badge badge-outline">Agent handled</span></div>
+              <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400">Your tasks</p>
+              <div class="flex gap-1">
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-medium">All</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full border border-slate-200 text-slate-400">Urgent</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full border border-slate-200 text-slate-400">Agent handled</span>
+              </div>
             </div>
-            <div class="space-y-2">
-              <div class="task-card bg-white border rounded-lg p-3"><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-destructive">At risk</span><span class="text-sm font-medium flex-1 truncate">Q1 Materials Procurement — Final Approval</span><button class="btn btn-ghost btn-sm text-blue-600" style="flex-shrink:0">Review →</button></div><div class="flex flex-wrap gap-1.5"><span class="badge badge-secondary">Procurement</span><span class="text-[10px] text-muted-foreground">Lisa M.</span><span class="text-[10px] text-muted-foreground">Due in 2 days</span></div></div>
-              <div class="task-card bg-white border rounded-lg p-3"><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-destructive">At risk</span><span class="text-sm font-medium flex-1 truncate">Osaka → Tokyo Delivery Schedule</span><button class="btn btn-ghost btn-sm text-blue-600" style="flex-shrink:0">Review →</button></div><div class="flex flex-wrap gap-1.5"><span class="badge badge-secondary">Logistics</span><span class="text-[10px] text-muted-foreground">Marcus T.</span><span class="text-[10px] text-muted-foreground">Due tomorrow</span><span class="badge badge-green">Reminder sent</span></div></div>
-              <div class="task-card bg-white border rounded-lg p-3"><div class="flex items-center gap-2 mb-1.5"><span class="badge badge-secondary">Watch</span><span class="text-sm font-medium flex-1 truncate">Q2 Budget Draft — Team Review</span><button class="btn btn-ghost btn-sm text-blue-600" style="flex-shrink:0">Review →</button></div><div class="flex flex-wrap gap-1.5"><span class="badge badge-secondary">Finance</span><span class="text-[10px] text-muted-foreground">Sarah K.</span><span class="text-[10px] text-muted-foreground">Due in 5 days</span><span class="badge badge-blue">On track</span></div></div>
+            <div class="flex flex-col gap-2">
+              <div class="bg-white border border-slate-200 rounded-lg p-3 hover:border-slate-300 cursor-default">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-[10px] font-semibold bg-red-50 text-red-600 border border-red-200 px-2 py-0.5 rounded-full shrink-0">At risk</span>
+                  <span class="text-sm font-medium flex-1 truncate min-w-0">Q1 Materials Procurement — Final Approval</span>
+                  <button class="text-xs text-blue-600 hover:underline shrink-0">Review →</button>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded">Procurement</span>
+                  <span class="text-[10px] text-slate-400">Lisa M.</span>
+                  <span class="text-[10px] text-slate-400">Due in 2 days</span>
+                </div>
+              </div>
+              <div class="bg-white border border-slate-200 rounded-lg p-3 hover:border-slate-300 cursor-default">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-[10px] font-semibold bg-red-50 text-red-600 border border-red-200 px-2 py-0.5 rounded-full shrink-0">At risk</span>
+                  <span class="text-sm font-medium flex-1 truncate min-w-0">Osaka → Tokyo Delivery Schedule</span>
+                  <button class="text-xs text-blue-600 hover:underline shrink-0">Review →</button>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded">Logistics</span>
+                  <span class="text-[10px] text-slate-400">Marcus T.</span>
+                  <span class="text-[10px] text-slate-400">Due tomorrow</span>
+                  <span class="text-[10px] bg-green-50 text-green-700 border border-green-200 px-2 py-0.5 rounded-full font-medium">Reminder sent</span>
+                </div>
+              </div>
+              <div class="bg-white border border-slate-200 rounded-lg p-3 hover:border-slate-300 cursor-default">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="text-[10px] font-semibold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full shrink-0">Watch</span>
+                  <span class="text-sm font-medium flex-1 truncate min-w-0">Q2 Budget Draft — Team Review</span>
+                  <button class="text-xs text-blue-600 hover:underline shrink-0">Review →</button>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded">Finance</span>
+                  <span class="text-[10px] text-slate-400">Sarah K.</span>
+                  <span class="text-[10px] text-slate-400">Due in 5 days</span>
+                  <span class="text-[10px] bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">On track</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="alert alert-green"><div class="flex items-center gap-2 text-xs text-green-700"><span>✓</span><span>FlowAgent handled 2 reminders and 1 escalation — nothing else required.</span></div></div>
+          <div class="bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-2">
+            <span class="text-green-600">✓</span>
+            <p class="text-xs text-green-700">FlowAgent handled 2 reminders and 1 escalation — nothing else required.</p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- JP FRAME -->
-    <div class="h-full overflow-hidden flex flex-col" style="width:50%">
-      <div class="px-5 pt-4 pb-2 bg-white border-b shrink-0">
+    <div class="flex flex-col h-full overflow-hidden" style="width:50%">
+      <div class="px-5 pt-4 pb-2.5 bg-white border-b border-slate-200 shrink-0">
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-2">
             <div class="w-4 h-0.5 rounded-full bg-amber-500"></div>
-            <span id="jp-frame-label" class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Japan · 日本語</span>
+            <span id="jp-frame-label" class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Japan · 日本語</span>
           </div>
-          <button onclick="toggleJpLang()" class="btn btn-outline btn-sm gap-1">
+          <button onclick="toggleJpLang()" class="flex items-center gap-1 px-3 py-1 rounded-md border border-slate-200 text-xs hover:bg-slate-50">
             <span id="lt-jp" class="text-amber-600 font-semibold">JP</span>
-            <span class="text-muted-foreground">·</span>
-            <span id="lt-en" class="text-muted-foreground">EN</span>
+            <span class="text-slate-300">·</span>
+            <span id="lt-en" class="text-slate-400">EN</span>
           </button>
         </div>
         <div id="jp-chips" class="flex flex-wrap gap-1.5"></div>
       </div>
       <!-- JP topbar -->
-      <div class="flex items-center justify-between px-4 py-2 border-b bg-white shrink-0">
-        <div class="flex items-center gap-2">
+      <div class="flex items-center justify-between px-4 py-2 border-b border-slate-200 bg-white shrink-0 gap-3">
+        <div class="flex items-center gap-2 shrink-0">
           <div class="w-2 h-2 rounded-full bg-amber-500"></div>
           <span class="font-semibold text-sm">FlowCore</span>
-          <span id="jp-sub" class="text-xs text-muted-foreground">エンタープライズ</span>
+          <span id="jp-sub" class="text-xs text-slate-400">エンタープライズ</span>
         </div>
         <nav id="jp-nav" class="flex gap-0.5"></nav>
-        <div class="flex items-center gap-2">
-          <span id="jp-env" class="text-xs text-muted-foreground flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>本番環境</span>
-          <span id="jp-user" class="text-xs text-muted-foreground hidden xl:block">田中 太郎 / 業務部長</span>
-          <div id="jp-avatar" class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-medium">田</div>
+        <div class="flex items-center gap-2 shrink-0">
+          <span id="jp-env" class="text-xs text-slate-400 flex items-center gap-1"></span>
+          <span id="jp-user" class="text-xs text-slate-400 hidden xl:block"></span>
+          <div id="jp-avatar" class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-semibold"></div>
         </div>
       </div>
       <div class="flex flex-1 overflow-hidden">
         <!-- JP sidebar -->
-        <div class="w-44 shrink-0 border-r bg-white py-2 overflow-y-auto flex flex-col">
+        <div class="w-44 shrink-0 border-r border-slate-200 bg-white py-2 overflow-y-auto">
           <div class="px-3 mb-2">
-            <p id="jp-ws-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">ワークスペース</p>
+            <p id="jp-ws-label" class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1.5"></p>
             <div id="jp-sb-nav"></div>
           </div>
-          <hr class="mx-3 border-border mb-2" />
+          <hr class="border-slate-100 mx-3 mb-2" />
           <div class="px-3 mb-2">
-            <p id="jp-dept-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">部門フィルター</p>
+            <p id="jp-dept-label" class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1.5"></p>
             <div id="jp-depts"></div>
           </div>
-          <hr class="mx-3 border-border mb-2" />
+          <hr class="border-slate-100 mx-3 mb-2" />
           <div class="px-3">
-            <p id="jp-agent-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">エージェント状態</p>
+            <p id="jp-agent-label" class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1.5"></p>
             <div id="jp-agent-lines"></div>
           </div>
         </div>
         <!-- JP main -->
-        <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50" id="jp-main"></div>
+        <div id="jp-main" class="flex-1 overflow-y-auto p-4 bg-slate-50 flex flex-col gap-3"></div>
         <!-- JP right panel -->
-        <div class="w-48 shrink-0 border-l bg-white overflow-y-auto p-3">
-          <p id="jp-audit-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2">監査ログ</p>
-          <div id="jp-audit" class="divide-y"></div>
-          <hr class="my-3 border-border" />
-          <p id="jp-perm-label" class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-2">権限レベル</p>
+        <div class="w-48 shrink-0 border-l border-slate-200 bg-white overflow-y-auto p-3">
+          <p id="jp-audit-label" class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2"></p>
+          <div id="jp-audit" class="divide-y divide-slate-50"></div>
+          <hr class="border-slate-100 my-3" />
+          <p id="jp-perm-label" class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-2"></p>
           <div id="jp-perms" class="space-y-1.5"></div>
         </div>
       </div>
     </div>
 
-  </div>
-</div>
+  </div><!-- end frames-container -->
+</div><!-- end frames-wrap -->
 
 <script>
-// ── DATA ────────────────────────────────────────────────────────────────────
 const CFG = {
   us: {
     voice:       { val:55, label:'Professional', us:'Approachable register',    jp:'Keigo (敬語) register' },
@@ -325,18 +279,18 @@ const CFG = {
     directness:  { val:78, label:'Direct',        us:'State facts plainly',     jp:"Hint, don't state" },
     hierarchy:   { on:false, us:'Off — flat language',         jp:'On — 部長/課長 shown' },
     facesaving:  { on:false, us:'Off — direct accountability', jp:'On — no blame attribution' },
-    lang:        { val:'EN',              us:'English (en-US)',         jp:'Japanese (ja-JP)' },
-    density:     { val:30, label:'Low',   us:'3 KPI cards',             jp:'4 KPI cards, all upfront' },
-    space:       { val:68, label:'Spacious', us:'24px base spacing',    jp:'12px base spacing' },
-    depth:       { val:20, label:'Progressive', us:'Click to expand',  jp:'All data upfront' },
-    datefmt:     { val:'MM/DD/YY',        us:'MM/DD/YY',                jp:'YYYY/MM/DD, 全角' },
-    authority:   { val:'Autonomous',      us:'Agent acts, you review',  jp:'Agent proposes, human approves' },
-    approvalvis: { on:false, us:'Hidden from view',             jp:'Ringi chain always visible' },
-    auditlog:    { on:false, us:"On-demand, behind 'See log'",  jp:'Persistent — always visible' },
-    escalation:  { on:false, us:'Off — agent can bypass',       jp:'On — chain must complete' },
-    residency:   { val:'US-East-1',       us:'US-East-1 (Virginia)',    jp:'AP-Northeast-1 (Tokyo)' },
-    seniority:   { val:'Any',             us:'Any user',                jp:'係長 or above' },
-    retention:   { val:'90d',             us:'90 days',                 jp:'7yr (regulatory min.)' },
+    lang:        { val:'EN',               us:'English (en-US)',         jp:'Japanese (ja-JP)' },
+    density:     { val:30, label:'Low',    us:'3 KPI cards',             jp:'4 KPI cards, all upfront' },
+    space:       { val:68, label:'Spacious', us:'24px base spacing',     jp:'12px base spacing' },
+    depth:       { val:20, label:'Progressive', us:'Click to expand',   jp:'All data upfront' },
+    datefmt:     { val:'MM/DD/YY',         us:'MM/DD/YY',                jp:'YYYY/MM/DD, 全角' },
+    authority:   { val:'Autonomous',       us:'Agent acts, you review',  jp:'Agent proposes, human approves' },
+    approvalvis: { on:false, us:'Hidden from view',            jp:'Ringi chain always visible' },
+    auditlog:    { on:false, us:"On-demand, behind 'See log'", jp:'Persistent — always visible' },
+    escalation:  { on:false, us:'Off — agent can bypass',     jp:'On — chain must complete' },
+    residency:   { val:'US-East-1',        us:'US-East-1 (Virginia)',    jp:'AP-Northeast-1 (Tokyo)' },
+    seniority:   { val:'Any',              us:'Any user',                jp:'係長 or above' },
+    retention:   { val:'90d',              us:'90 days',                 jp:'7yr (regulatory min.)' },
   },
   jp: {
     voice:       { val:88, label:'Formal',        us:'Approachable register',    jp:'Keigo (敬語) register' },
@@ -344,24 +298,24 @@ const CFG = {
     directness:  { val:22, label:'Indirect',      us:'State facts plainly',      jp:"Hint, don't state" },
     hierarchy:   { on:true,  us:'Off — flat language',         jp:'On — 部長/課長 shown' },
     facesaving:  { on:true,  us:'Off — direct accountability', jp:'On — no blame attribution' },
-    lang:        { val:'JP',              us:'English (en-US)',          jp:'Japanese (ja-JP)' },
-    density:     { val:75, label:'High',  us:'3 KPI cards',              jp:'4 KPI cards, all upfront' },
-    space:       { val:28, label:'Compact', us:'24px base spacing',      jp:'12px base spacing' },
-    depth:       { val:82, label:'Upfront', us:'Click to expand',        jp:'All data upfront' },
-    datefmt:     { val:'YYYY/MM/DD',      us:'MM/DD/YY',                 jp:'YYYY/MM/DD, 全角' },
-    authority:   { val:'Require approval', us:'Agent acts, you review',  jp:'Agent proposes, human approves' },
-    approvalvis: { on:true,  us:'Hidden from view',             jp:'Ringi chain always visible' },
-    auditlog:    { on:true,  us:"On-demand, behind 'See log'",  jp:'Persistent — always visible' },
-    escalation:  { on:true,  us:'Off — agent can bypass',       jp:'On — chain must complete' },
-    residency:   { val:'AP-NE-1 Tokyo',   us:'US-East-1 (Virginia)',     jp:'AP-Northeast-1 (Tokyo)' },
-    seniority:   { val:'係長+',            us:'Any user',                 jp:'係長 or above' },
-    retention:   { val:'7yr',             us:'90 days',                  jp:'7yr (regulatory min.)' },
+    lang:        { val:'JP',               us:'English (en-US)',          jp:'Japanese (ja-JP)' },
+    density:     { val:75, label:'High',   us:'3 KPI cards',              jp:'4 KPI cards, all upfront' },
+    space:       { val:28, label:'Compact', us:'24px base spacing',       jp:'12px base spacing' },
+    depth:       { val:82, label:'Upfront', us:'Click to expand',         jp:'All data upfront' },
+    datefmt:     { val:'YYYY/MM/DD',       us:'MM/DD/YY',                 jp:'YYYY/MM/DD, 全角' },
+    authority:   { val:'Require approval', us:'Agent acts, you review',   jp:'Agent proposes, human approves' },
+    approvalvis: { on:true,  us:'Hidden from view',            jp:'Ringi chain always visible' },
+    auditlog:    { on:true,  us:"On-demand, behind 'See log'", jp:'Persistent — always visible' },
+    escalation:  { on:true,  us:'Off — agent can bypass',     jp:'On — chain must complete' },
+    residency:   { val:'AP-NE-1 Tokyo',    us:'US-East-1 (Virginia)',     jp:'AP-Northeast-1 (Tokyo)' },
+    seniority:   { val:'係長+',             us:'Any user',                 jp:'係長 or above' },
+    retention:   { val:'7yr',              us:'90 days',                  jp:'7yr (regulatory min.)' },
   },
 }
 
 const STR = {
   jp: {
-    chips: ['提案のみ · 自律実行しない','稟議フロー常時表示','全情報をアップフロントで表示'],
+    chips:['提案のみ · 自律実行しない','稟議フロー常時表示','全情報をアップフロントで表示'],
     frameLabel:'Japan · 日本語', sub:'エンタープライズ',
     nav:['タスク管理','承認フロー','レポート','設定'],
     env:'本番環境', user:'田中 太郎 / 業務部長', avatar:'田',
@@ -371,9 +325,9 @@ const STR = {
     kpis:[{l:'遅延リスク',v:'3',s:'前日比 +2',danger:true},{l:'承認待ち',v:'7',s:'平均 1.4日'},{l:'完了率 (今週)',v:'84%',s:'目標: 90%',warn:true},{l:'提案 (承認待ち)',v:'5',s:'要確認',warn:true}],
     sectionTitle:'遅延リスクタスク一覧', sectionNote:'エージェントが検知 · 要確認',
     tasks:[
-      {risk:'高リスク',hi:true, name:'Q1原材料調達 — 最終承認待ち',       dept:'調達部',owner:'担当: 山田 課長',due:'期限: 3/26',rem:'残2日', remDanger:true},
-      {risk:'高リスク',hi:true, name:'大阪倉庫 → 東京配送スケジュール確定',dept:'物流部',owner:'担当: 佐藤 係長',due:'期限: 3/25',rem:'残1日', remDanger:true},
-      {risk:'中リスク',hi:false,name:'Q2予算策定レビュー (第3次案)',      dept:'財務部',owner:'担当: 鈴木 部長',due:'期限: 3/29',rem:'残5日', remDanger:false},
+      {risk:'高リスク',hi:true, name:'Q1原材料調達 — 最終承認待ち',         dept:'調達部',owner:'担当: 山田 課長',due:'期限: 3/26',rem:'残2日', remDanger:true},
+      {risk:'高リスク',hi:true, name:'大阪倉庫 → 東京配送スケジュール確定', dept:'物流部',owner:'担当: 佐藤 係長',due:'期限: 3/25',rem:'残1日', remDanger:true},
+      {risk:'中リスク',hi:false,name:'Q2予算策定レビュー (第3次案)',         dept:'財務部',owner:'担当: 鈴木 部長',due:'期限: 3/29',rem:'残5日', remDanger:false},
     ],
     agentTitle:'エージェント提案', agentSub:'自律実行なし · 要承認',
     agentBody:'Q1原材料調達の最終承認期限まで残り2日です。現在「部長承認」ステップで止まっています。\n\n→ 鈴木部長へリマインダーを送信することを提案します。送信前にご確認ください。',
@@ -383,7 +337,7 @@ const STR = {
       {s:'done',   name:'担当者確認（山田 課長）',   sub:'内容・金額チェック完了',  time:'3/22 10:05'},
       {s:'done',   name:'部門長確認（佐藤 部長代理）',sub:'コンプライアンス確認完了',time:'3/23 14:30'},
       {s:'pending',name:'最終承認（鈴木 部長）',     sub:'承認待ち — 2日経過',     time:'期限 3/26',warn:true},
-      {s:'waiting',name:'経理部 記帳処理',           sub:'前ステップ完了後に開始',  time:'—'},
+      {s:'waiting',name:'経理部 記帳処理',           sub:'前ステップ完了後に開始', time:'—'},
     ],
     auditLabel:'監査ログ', permLabel:'権限レベル',
     audit:[
@@ -395,7 +349,7 @@ const STR = {
     perms:[['閲覧','全員'],['提案承認','係長以上'],['外部送信','課長以上'],['最終承認','部長']],
   },
   en: {
-    chips: ['Suggest only · no autonomous action','Approval chain always visible','All information shown upfront'],
+    chips:['Suggest only · no autonomous action','Approval chain always visible','All information shown upfront'],
     frameLabel:'Japan · English (JP structure)', sub:'Enterprise',
     nav:['Task mgmt.','Approval flow','Reports','Settings'],
     env:'Production', user:'T. Tanaka / Operations Mgr.', avatar:'T',
@@ -405,176 +359,144 @@ const STR = {
     kpis:[{l:'Delay risk',v:'3',s:'+2 vs yesterday',danger:true},{l:'Awaiting approval',v:'7',s:'Avg. 1.4 days'},{l:'Completion (week)',v:'84%',s:'Target: 90%',warn:true},{l:'Suggestions pending',v:'5',s:'Requires review',warn:true}],
     sectionTitle:'Delay risk tasks', sectionNote:'Agent-detected · review required',
     tasks:[
-      {risk:'High risk',  hi:true, name:'Q1 Raw Materials — Final Approval',   dept:'Procurement',owner:'Owner: Sec. Chief Yamada', due:'Due: 3/26',rem:'2 days left',remDanger:true},
-      {risk:'High risk',  hi:true, name:'Osaka WH → Tokyo Delivery Schedule', dept:'Logistics',  owner:'Owner: Sub-chief Sato',    due:'Due: 3/25',rem:'1 day left', remDanger:true},
-      {risk:'Medium risk',hi:false,name:'Q2 Budget Review — Draft v3',         dept:'Finance',    owner:'Owner: Dept. Head Suzuki', due:'Due: 3/29',rem:'5 days left',remDanger:false},
+      {risk:'High risk',  hi:true, name:'Q1 Raw Materials — Final Approval',   dept:'Procurement',owner:'Owner: Sec. Chief Yamada',due:'Due: 3/26',rem:'2 days left',remDanger:true},
+      {risk:'High risk',  hi:true, name:'Osaka WH → Tokyo Delivery Schedule',  dept:'Logistics',  owner:'Owner: Sub-chief Sato',  due:'Due: 3/25',rem:'1 day left', remDanger:true},
+      {risk:'Medium risk',hi:false,name:'Q2 Budget Review — Draft v3',          dept:'Finance',    owner:'Owner: Dept. Head Suzuki',due:'Due: 3/29',rem:'5 days left',remDanger:false},
     ],
     agentTitle:'Agent suggestion', agentSub:'No autonomous action · Requires approval',
     agentBody:`The final approval deadline for Q1 Raw Materials is in 2 days. The task is stalled at the "Dept. Head approval" step.\n\n→ Proposing a reminder to Dept. Head Suzuki. Please review before it is sent.`,
     agentBtns:['Approve & send','Edit before sending','Dismiss'],
     chainTitle:'Approval chain (ringi)',
     chain:[
-      {s:'done',   name:'Initiator review (Sec. Chief Yamada)',sub:'Content & amount verified',     time:'03/22 10:05'},
-      {s:'done',   name:'Dept. head review (Acting Mgr. Sato)',sub:'Compliance check complete',     time:'03/23 14:30'},
-      {s:'pending',name:'Final approval (Dept. Head Suzuki)',  sub:'Pending — 2 days elapsed',      time:'Due 3/26',warn:true},
-      {s:'waiting',name:'Accounting: bookkeeping',             sub:'Starts after prior step',       time:'—'},
+      {s:'done',   name:'Initiator review (Sec. Chief Yamada)',sub:'Content & amount verified',    time:'03/22 10:05'},
+      {s:'done',   name:'Dept. head review (Acting Mgr. Sato)',sub:'Compliance check complete',    time:'03/23 14:30'},
+      {s:'pending',name:'Final approval (Dept. Head Suzuki)',  sub:'Pending — 2 days elapsed',     time:'Due 3/26',warn:true},
+      {s:'waiting',name:'Accounting: bookkeeping',             sub:'Starts after prior step',      time:'—'},
     ],
     auditLabel:'Audit log', permLabel:'Permission levels',
     audit:[
-      {time:'14:31:08',who:'[Agent]',          sys:true, text:'Delay risk detected. Suggestion generated. Not sent.'},
-      {time:'14:28:45',who:'T. Tanaka',         sys:false,text:'reviewed logistics task.'},
-      {time:'14:15:02',who:'Sec. Chief Yamada', sys:false,text:'added a comment.'},
-      {time:'13:50:30',who:'[Agent]',           sys:true, text:'3 risk tasks identified. Notifications not sent.'},
+      {time:'14:31:08',who:'[Agent]',           sys:true, text:'Delay risk detected. Suggestion generated. Not sent.'},
+      {time:'14:28:45',who:'T. Tanaka',          sys:false,text:'reviewed logistics task.'},
+      {time:'14:15:02',who:'Sec. Chief Yamada',  sys:false,text:'added a comment.'},
+      {time:'13:50:30',who:'[Agent]',            sys:true, text:'3 risk tasks identified. Notifications not sent.'},
     ],
     perms:[['View','Everyone'],['Approve proposals','Section Chief+'],['External send','Division Chief+'],['Final approval','Dept. Head']],
   },
 }
 
-// ── STATE ──────────────────────────────────────────────────────────────────
-let market = 'us'
-let activeTab = 'market'
-let jpLang = 'jp'
-let jpSelTask = 0
+let market = 'us', activeTab = 'market', jpLang = 'jp', jpSel = 0
 
-// ── HELPERS ────────────────────────────────────────────────────────────────
 const $ = id => document.getElementById(id)
 
-function el(tag, cls, html='') {
-  const e = document.createElement(tag)
-  if (cls) e.className = cls
-  if (html) e.innerHTML = html
-  return e
-}
-
-function swtch(on, colorCls='') {
-  return `<div class="switch ${on ? (colorCls || 'on') : ''}"></div>`
-}
-
-function slider(val, label, left, right) {
-  return `
-    <div>
-      <div class="flex justify-between items-center mb-1">
-        <span class="text-[10px] text-muted-foreground">${left}</span>
-        <span class="text-xs font-medium">${label}</span>
-        <span class="text-[10px] text-muted-foreground">${right}</span>
-      </div>
-      <input type="range" value="${val}" min="0" max="100" disabled style="cursor:default" />
-    </div>`
-}
-
-function selectEl(val, options) {
-  return `<select class="w-full border border-input rounded-md text-xs px-3 py-1.5 bg-background text-foreground" disabled>${options.map(o=>`<option ${o===val?'selected':''}>${o}</option>`).join('')}</select>`
-}
-
-function deltaRow(field) {
-  const usLive = market === 'us'
-  return `<div class="delta-row">
-    <span class="delta-us ${usLive?'live':''}">US → ${field.us}</span>
-    <span class="text-muted-foreground">·</span>
-    <span class="delta-jp ${!usLive?'live':''}">JP → ${field.jp}</span>
-  </div>`
+/* ── panel helpers ── */
+function secHead(label) {
+  return `<div class="flex items-center gap-2 mt-5 mb-3 first:mt-1"><span class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 whitespace-nowrap">${label}</span><hr class="flex-1 border-slate-100" /></div>`
 }
 
 function lockBadge(level) {
-  const map = {market:['lock-market','↑ market'],it:['lock-it','↑ IT admin'],ops:['lock-ops','↑ ops admin']}
+  const map = {market:['bg-violet-50 text-violet-700 border-violet-200','↑ market'],it:['bg-red-50 text-red-600 border-red-200','↑ IT admin'],ops:['bg-blue-50 text-blue-600 border-blue-200','↑ ops admin']}
   const [cls, label] = map[level]
-  return `<span class="lock-badge ${cls}">${label}</span>`
+  return `<span class="text-[10px] px-1.5 py-0.5 rounded border ${cls} font-medium">${label}</span>`
 }
 
-function ctrlBlock({label, lock, inherited, note, body}) {
-  return `<div class="ctrl-block ${inherited?'inherited':''}">
-    <div class="ctrl-label">${label}${lock?lockBadge(lock):''}</div>
+function deltaRow(field) {
+  const usL = market === 'us'
+  return `<div class="flex flex-wrap gap-1.5 mt-1.5 text-[11px]"><span class="delta-us ${usL?'live':''}">US → ${field.us}</span><span class="text-slate-300">·</span><span class="delta-jp ${!usL?'live':''}">JP → ${field.jp}</span></div>`
+}
+
+function sw(on, cls='on') { return `<div class="switch ${on?cls:''}"></div>` }
+
+function slider(val, label, left, right) {
+  return `<div class="flex justify-between items-center mb-1"><span class="text-[10px] text-slate-400">${left}</span><span class="text-xs font-semibold text-slate-800">${label}</span><span class="text-[10px] text-slate-400">${right}</span></div><input type="range" value="${val}" min="0" max="100" disabled />`
+}
+
+function sel(val, opts) {
+  return `<select class="w-full py-1.5 px-3 pr-7 text-xs border border-slate-200 rounded-md text-slate-800" disabled>${opts.map(o=>`<option${o===val?' selected':''}>${o}</option>`).join('')}</select>`
+}
+
+function ctrl({label, lock='', inherited=false, note='', body}) {
+  return `<div class="mb-3.5 ${inherited?'opacity-40 pointer-events-none':''}">
+    <div class="flex items-center gap-1.5 flex-wrap mb-1.5 text-xs text-slate-500">${label}${lock?lockBadge(lock):''}</div>
     ${body}
-    ${note?`<div class="range-note">${note}</div>`:''}
+    ${note?`<p class="text-[10px] text-slate-400 bg-slate-50 border border-slate-100 rounded px-2 py-1 mt-1 leading-snug">${note}</p>`:''}
   </div>`
 }
 
-function sectionHead(label) {
-  return `<div class="section-head"><span>${label}</span><hr /></div>`
+function togRow(on, desc, amberOn=false) {
+  return `<div class="flex items-start justify-between gap-2"><span class="text-xs text-slate-500 flex-1 leading-snug">${desc}</span>${sw(on,amberOn?'on-amber':'on')}</div>`
 }
 
-// ── PANEL CONTENT ──────────────────────────────────────────────────────────
-function renderMarketPanel(c) {
-  return `
-    ${sectionHead('Persona')}
-    ${ctrlBlock({label:'Voice register', body: slider(c.voice.val,'Professional','Casual','Formal') + deltaRow(c.voice)})}
-    ${ctrlBlock({label:'Communication tone', body: slider(c.tone.val, c.tone.label, 'Warm','Clinical') + deltaRow(c.tone)})}
-    ${ctrlBlock({label:'Directness', body: slider(c.directness.val, c.directness.label, 'Indirect','Direct') + deltaRow(c.directness)})}
-    ${ctrlBlock({label:'Hierarchy signalling', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Show role titles in agent messages (e.g. "部長" vs "Manager")</span>${swtch(c.hierarchy.on,'on-amber')}</div>${deltaRow(c.hierarchy)}`})}
-    ${ctrlBlock({label:'Face-saving language', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Rephrase alerts to avoid blame attribution</span>${swtch(c.facesaving.on,'on-amber')}</div>${deltaRow(c.facesaving)}`})}
-    ${sectionHead('Content')}
-    ${ctrlBlock({label:'UI language', body: selectEl(c.lang.val,['EN','JP','DE','FR','ZH']) + deltaRow(c.lang)})}
-    ${ctrlBlock({label:'Information density', body: slider(c.density.val, c.density.label, 'Minimal','Dense') + deltaRow(c.density)})}
-    ${ctrlBlock({label:'Space tokens', body: slider(c.space.val, c.space.label, 'Compact','Spacious') + deltaRow(c.space)})}
-    ${ctrlBlock({label:'Disclosure depth', body: slider(c.depth.val, c.depth.label, 'Progressive','Upfront') + deltaRow(c.depth)})}
-    ${ctrlBlock({label:'Date & number format', body: selectEl(c.datefmt.val,['MM/DD/YY','YYYY/MM/DD','DD/MM/YY']) + deltaRow(c.datefmt)})}
-    ${sectionHead('Governance defaults')}
-    ${ctrlBlock({label:'Agent action authority', body: selectEl(c.authority.val,['Autonomous','Suggest only','Require approval']) + deltaRow(c.authority)})}
-    ${ctrlBlock({label:'Approval chain visibility', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Show sign-off chain on all tasks by default</span>${swtch(c.approvalvis.on,'on-amber')}</div>${deltaRow(c.approvalvis)}`})}
-  `
+/* ── panel renderers ── */
+function marketPanel(c) {
+  return secHead('Persona')
+    + ctrl({label:'Voice register', body: slider(c.voice.val,c.voice.label,'Casual','Formal') + deltaRow(c.voice)})
+    + ctrl({label:'Communication tone', body: slider(c.tone.val,c.tone.label,'Warm','Clinical') + deltaRow(c.tone)})
+    + ctrl({label:'Directness', body: slider(c.directness.val,c.directness.label,'Indirect','Direct') + deltaRow(c.directness)})
+    + ctrl({label:'Hierarchy signalling', body: togRow(c.hierarchy.on,'Show role titles in agent messages (e.g. "部長" vs "Manager")',true) + deltaRow(c.hierarchy)})
+    + ctrl({label:'Face-saving language', body: togRow(c.facesaving.on,'Rephrase alerts to avoid blame attribution',true) + deltaRow(c.facesaving)})
+    + secHead('Content')
+    + ctrl({label:'UI language', body: sel(c.lang.val,['EN','JP','DE','FR','ZH']) + deltaRow(c.lang)})
+    + ctrl({label:'Information density', body: slider(c.density.val,c.density.label,'Minimal','Dense') + deltaRow(c.density)})
+    + ctrl({label:'Space tokens', body: slider(c.space.val,c.space.label,'Compact','Spacious') + deltaRow(c.space)})
+    + ctrl({label:'Disclosure depth', body: slider(c.depth.val,c.depth.label,'Progressive','Upfront') + deltaRow(c.depth)})
+    + ctrl({label:'Date & number format', body: sel(c.datefmt.val,['MM/DD/YY','YYYY/MM/DD','DD/MM/YY']) + deltaRow(c.datefmt)})
+    + secHead('Governance defaults')
+    + ctrl({label:'Agent action authority', body: sel(c.authority.val,['Autonomous','Suggest only','Require approval']) + deltaRow(c.authority)})
+    + ctrl({label:'Approval chain visibility', body: togRow(c.approvalvis.on,'Show sign-off chain on all tasks by default',true) + deltaRow(c.approvalvis)})
 }
 
-function renderITPanel(c) {
-  return `
-    ${sectionHead('Infrastructure')}
-    ${ctrlBlock({label:'Data residency', note:'Legal constraint — cannot be overridden by org or user', body: selectEl(c.residency.val,['US-East-1','AP-NE-1 Tokyo','EU-West-1'])})}
-    ${ctrlBlock({label:'Audit log persistence', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Persistent right-panel audit log vs. on-demand</span>${swtch(c.auditlog.on,'on-amber')}</div>${deltaRow(c.auditlog)}`})}
-    ${ctrlBlock({label:'Log retention', note: market==='jp'?'JP financial regs require min. 7yr for approval records':undefined, body: selectEl(c.retention.val,['30d','90d','1yr','7yr'])})}
-    ${sectionHead('Governance — tighten only')}
-    ${ctrlBlock({label:'Agent action authority', lock:'market', note:'IT can tighten but cannot loosen past market default', body: selectEl(c.authority.val,['Autonomous','Suggest only','Require approval'])})}
-    ${ctrlBlock({label:'Escalation hard-block', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Block all external sends until chain is complete</span>${swtch(c.escalation.on,'on-amber')}</div>${deltaRow(c.escalation)}`})}
-    ${sectionHead('Access & identity')}
-    ${ctrlBlock({label:'SSO provider', body: selectEl('Okta',['Okta','Azure AD','SAML 2.0'])})}
-    ${ctrlBlock({label:'Language lock', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Lock UI language org-wide — prevents user overrides</span>${swtch(false)}</div>`})}
-  `
+function itPanel(c) {
+  return secHead('Infrastructure')
+    + ctrl({label:'Data residency', note:'Legal constraint — cannot be overridden by org or user', body: sel(c.residency.val,['US-East-1','AP-NE-1 Tokyo','EU-West-1'])})
+    + ctrl({label:'Audit log persistence', body: togRow(c.auditlog.on,'Persistent right-panel audit log vs. on-demand',true) + deltaRow(c.auditlog)})
+    + ctrl({label:'Log retention', note: market==='jp'?'JP financial regs require min. 7yr for approval records':'', body: sel(c.retention.val,['30d','90d','1yr','7yr'])})
+    + secHead('Governance — tighten only')
+    + ctrl({label:'Agent action authority', lock:'market', note:'IT can tighten but cannot loosen past market default', body: sel(c.authority.val,['Autonomous','Suggest only','Require approval'])})
+    + ctrl({label:'Escalation hard-block', body: togRow(c.escalation.on,'Block all external sends until chain is complete',true) + deltaRow(c.escalation)})
+    + secHead('Access & identity')
+    + ctrl({label:'SSO provider', body: sel('Okta',['Okta','Azure AD','SAML 2.0'])})
+    + ctrl({label:'Language lock', body: togRow(false,'Lock UI language org-wide — prevents user overrides')})
 }
 
-function renderOpsPanel(c) {
+function opsPanel(c) {
   const chain = [
     {dot:'bg-slate-300',name:'Initiator (任意)',role:'Step 1',indent:false},
     {dot:'bg-amber-400',name:'Section Chief (係長)',role:'Step 2',indent:true},
     {dot:'bg-amber-500',name:'Division Chief (課長)',role:'Step 3',indent:true},
     {dot:'bg-blue-500', name:'Dept. Head (部長)',role:'Final',indent:true},
   ]
-  const chainHTML = `<div class="border rounded-md divide-y text-xs overflow-hidden">
-    ${chain.map(n=>`<div class="flex items-center gap-2 px-3 py-2 bg-white">${n.indent?'<div class="w-3 shrink-0"></div>':''}<div class="w-2 h-2 rounded-full shrink-0 ${n.dot}"></div><span class="flex-1">${n.name}</span><span class="text-muted-foreground">${n.role}</span></div>`).join('')}
-  </div>`
-  return `
-    ${sectionHead('Approval hierarchy')}
-    ${ctrlBlock({label:'Minimum approver seniority', note:'Role titles sourced from HRIS sync', body: selectEl(c.seniority.val,['Any','係長+','課長+','部長+'])})}
-    ${ctrlBlock({label:'Approval chain composition', note:'Steps sourced from HRIS · last synced 2h ago', body: chainHTML})}
-    ${sectionHead('Persona — refine within market bounds')}
-    ${ctrlBlock({label:'Hierarchy signalling', lock:'market', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Can soften for this org but not disable entirely</span>${swtch(c.hierarchy.on,'on-amber')}</div>`})}
-    ${ctrlBlock({label:'Face-saving language', lock:'market', inherited: market==='jp', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">${market==='jp'?'Locked on for JP market':'Indirect framing for delays'}</span>${swtch(c.facesaving.on,'on-amber')}</div>`})}
-    ${sectionHead('Content')}
-    ${ctrlBlock({label:'Display language', note:'Overridable by user unless IT Admin has locked language', body: selectEl(c.lang.val,['EN','JP','DE','FR'])})}
-  `
+  const chainHTML = `<div class="border border-slate-200 rounded-md divide-y divide-slate-100 overflow-hidden">${chain.map(n=>`<div class="flex items-center gap-2 px-3 py-2 bg-white text-xs">${n.indent?'<div class="w-3 shrink-0"></div>':''}<div class="w-2 h-2 rounded-full shrink-0 ${n.dot}"></div><span class="flex-1 text-slate-700">${n.name}</span><span class="text-slate-400">${n.role}</span></div>`).join('')}</div>`
+  return secHead('Approval hierarchy')
+    + ctrl({label:'Minimum approver seniority', note:'Role titles sourced from HRIS sync', body: sel(c.seniority.val,['Any','係長+','課長+','部長+'])})
+    + ctrl({label:'Approval chain composition', note:'Steps sourced from HRIS · last synced 2h ago', body: chainHTML})
+    + secHead('Persona — refine within market bounds')
+    + ctrl({label:'Hierarchy signalling', lock:'market', body: togRow(c.hierarchy.on,'Can soften for this org but not disable entirely',true)})
+    + ctrl({label:'Face-saving language', lock:'market', inherited: market==='jp', body: togRow(c.facesaving.on, market==='jp'?'Locked on for JP market':'Indirect framing for delays',true)})
+    + secHead('Content')
+    + ctrl({label:'Display language', note:'Overridable by user unless IT Admin has locked language', body: sel(c.lang.val,['EN','JP','DE','FR'])})
 }
 
-function renderUserPanel(c) {
-  return `
-    ${sectionHead('Ergonomics')}
-    ${ctrlBlock({label:'Language preference', note:'Disabled if IT Admin has locked org language', body: selectEl(c.lang.val,['EN','JP','DE','FR'])})}
-    ${ctrlBlock({label:'Date & number format', body: selectEl(c.datefmt.val,['MM/DD/YY','YYYY/MM/DD','DD/MM/YY'])})}
-    ${ctrlBlock({label:'Disclosure preference', note:'Cannot go below market floor', body: slider(c.depth.val, c.depth.label, 'Progressive','Upfront')})}
-    ${sectionHead('Tone adjustment')}
-    ${ctrlBlock({label:'Tone nudge', lock:'market', note:'±15% range around market default', body: slider(30,'Neutral','Market min','+Warmer')})}
-    ${sectionHead('Notifications')}
-    ${ctrlBlock({label:'Approval reminders', body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Receive reminders for pending approvals</span>${swtch(true,'on-green')}</div>`})}
-    ${sectionHead('Read-only — set above')}
-    ${ctrlBlock({label:'Agent authority', lock:'market', inherited:true, body: selectEl(c.authority.val,['Autonomous','Suggest only','Require approval'])})}
-    ${ctrlBlock({label:'Approval chain', lock:'ops', inherited:true, body:`<div class="flex items-center justify-between gap-2"><span class="text-xs text-muted-foreground flex-1">Chain composition & seniority thresholds</span>${swtch(c.approvalvis.on,'on-amber')}</div>`})}
-    ${ctrlBlock({label:'Data residency', lock:'it', inherited:true, body: selectEl(c.residency.val,['US-East-1','AP-NE-1 Tokyo','EU-West-1'])})}
-  `
+function userPanel(c) {
+  return secHead('Ergonomics')
+    + ctrl({label:'Language preference', note:'Disabled if IT Admin has locked org language', body: sel(c.lang.val,['EN','JP','DE','FR'])})
+    + ctrl({label:'Date & number format', body: sel(c.datefmt.val,['MM/DD/YY','YYYY/MM/DD','DD/MM/YY'])})
+    + ctrl({label:'Disclosure preference', note:'Cannot go below market floor', body: slider(c.depth.val,c.depth.label,'Progressive','Upfront')})
+    + secHead('Tone adjustment')
+    + ctrl({label:'Tone nudge', lock:'market', note:'±15% range around market default', body: slider(30,'Neutral','Market min','+Warmer')})
+    + secHead('Notifications')
+    + ctrl({label:'Approval reminders', body: togRow(true,'Receive reminders for pending approvals','on-green')})
+    + secHead('Read-only — set above')
+    + ctrl({label:'Agent authority', lock:'market', inherited:true, body: sel(c.authority.val,['Autonomous','Suggest only','Require approval'])})
+    + ctrl({label:'Approval chain', lock:'ops', inherited:true, body: togRow(c.approvalvis.on,'Chain composition & seniority thresholds',true)})
+    + ctrl({label:'Data residency', lock:'it', inherited:true, body: sel(c.residency.val,['US-East-1','AP-NE-1 Tokyo','EU-West-1'])})
 }
 
-// ── JP FRAME RENDER ────────────────────────────────────────────────────────
-function renderJPFrame() {
+/* ── JP frame render ── */
+function renderJP() {
   const s = STR[jpLang]
-
   $('jp-frame-label').textContent = s.frameLabel
   $('jp-sub').textContent = s.sub
-  $('jp-env').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block mr-1"></span>${s.env}`
+  $('jp-env').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block mr-1 shrink-0"></span>${s.env}`
   $('jp-user').textContent = s.user
   $('jp-avatar').textContent = s.avatar
   $('jp-ws-label').textContent = s.wsLabel
@@ -582,114 +504,85 @@ function renderJPFrame() {
   $('jp-agent-label').textContent = s.agentLabel
   $('jp-audit-label').textContent = s.auditLabel
   $('jp-perm-label').textContent = s.permLabel
+  $('jp-chips').innerHTML = s.chips.map(c=>`<span class="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">${c}</span>`).join('')
+  $('jp-nav').innerHTML = s.nav.map((n,i)=>`<button class="px-3 py-1.5 rounded-md text-xs ${i===0?'font-medium bg-amber-50 text-amber-800':'text-slate-500 hover:bg-slate-50'}">${n}</button>`).join('')
+  const bgs = [['3','bg-red-100 text-red-600'],['7','bg-amber-100 text-amber-700'],['12','bg-slate-100 text-slate-500'],[null,null]]
+  $('jp-sb-nav').innerHTML = s.nav.map((item,i)=>`<div class="flex items-center justify-between px-2 py-1.5 rounded-md ${i===0?'bg-amber-50 text-amber-800 font-medium':'text-slate-500'} text-xs mb-0.5 cursor-default">${item}${bgs[i][0]?`<span class="text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${bgs[i][1]}">${bgs[i][0]}</span>`:''}</div>`).join('')
+  $('jp-depts').innerHTML = s.depts.map((d,i)=>`<div class="flex justify-between px-2 py-1.5 rounded-md ${i===0?'bg-amber-50 text-amber-800 font-medium':'text-slate-500'} text-xs mb-0.5 cursor-default"><span>${d}</span>${i>0?`<span class="text-slate-400">${['4','2','3'][i-1]}</span>`:''}</div>`).join('')
+  $('jp-agent-lines').innerHTML = s.agentLines.map((line,i)=>`<p class="text-xs leading-6 ${i===0?'text-green-600 flex items-center gap-1':i===1?'text-amber-600':'text-slate-400'}">${i===0?'<span class="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0"></span>':''}${line}</p>`).join('')
 
-  // chips
-  $('jp-chips').innerHTML = s.chips.map(c=>`<span class="badge badge-amber">${c}</span>`).join('')
-
-  // nav
-  $('jp-nav').innerHTML = s.nav.map((n,i)=>`<button class="btn ${i===0?'btn-secondary':'btn-ghost'} btn-sm ${i===0?'bg-amber-50 text-amber-800':''}">${n}</button>`).join('')
-
-  // sidebar nav
-  const badgeSets = [['3','destructive'],['7','warning'],['12','secondary'],[null,null]]
-  $('jp-sb-nav').innerHTML = s.nav.map((item,i)=>`
-    <div class="flex items-center justify-between mb-0.5">
-      <button class="btn ${i===0?'btn-secondary bg-amber-50 text-amber-800':'btn-ghost'} btn-sm flex-1 justify-start">${item}</button>
-      ${badgeSets[i][0]?`<span class="badge badge-${badgeSets[i][1]} ml-1" style="font-size:9px;padding:0 5px">${badgeSets[i][0]}</span>`:''}
-    </div>`).join('')
-
-  // depts
-  $('jp-depts').innerHTML = s.depts.map((d,i)=>`<div class="flex items-center justify-between mb-0.5"><button class="btn ${i===0?'btn-secondary bg-amber-50 text-amber-800':'btn-ghost'} btn-sm flex-1 justify-${i===0?'start':'between'}">${d}${i>0?`<span class="text-muted-foreground text-[10px]">${['4','2','3'][i-1]}</span>`:''}</button></div>`).join('')
-
-  // agent lines
-  $('jp-agent-lines').innerHTML = s.agentLines.map((line,i)=>`<p class="text-xs leading-6 ${i===0?'text-green-600 flex items-center gap-1':i===1?'text-amber-600':'text-muted-foreground'}">${i===0?'<span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>':''}${line}</p>`).join('')
-
-  // main area
-  const kpiCols = s.kpis.length === 4 ? 'grid-cols-4' : 'grid-cols-3'
-  const tasksHTML = s.tasks.map((t,i)=>`
-    <div class="task-card bg-white border rounded-lg p-3 ${jpSelTask===i?'selected-jp':''}" onclick="jpSelectTask(${i})">
+  const kCols = s.kpis.length === 4 ? 'grid-cols-4' : 'grid-cols-3'
+  const tasks = s.tasks.map((t,i)=>`
+    <div onclick="jpSel=${i};renderJP()" class="bg-white border rounded-lg p-3 cursor-pointer hover:border-slate-300 transition-colors ${jpSel===i?'card-sel-jp':'border-slate-200'}">
       <div class="flex items-center gap-2 mb-1.5">
-        <span class="badge badge-${t.hi?'destructive':'warning'}">${t.risk}</span>
-        <span class="text-sm font-medium flex-1 truncate">${t.name}</span>
+        <span class="text-[10px] font-semibold ${t.hi?'bg-red-50 text-red-600 border-red-200':'bg-amber-50 text-amber-700 border-amber-200'} border px-2 py-0.5 rounded-full shrink-0">${t.risk}</span>
+        <span class="text-sm font-medium flex-1 truncate min-w-0">${t.name}</span>
       </div>
-      <div class="flex flex-wrap gap-1.5 items-center">
-        <span class="badge badge-secondary">${t.dept}</span>
-        <span class="text-[10px] text-muted-foreground">${t.owner}</span>
-        <span class="text-[10px] text-muted-foreground">${t.due}</span>
-        <span class="text-[10px] font-medium ${t.remDanger?'text-red-600':'text-amber-600'}">${t.rem}</span>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded">${t.dept}</span>
+        <span class="text-[10px] text-slate-400">${t.owner}</span>
+        <span class="text-[10px] text-slate-400">${t.due}</span>
+        <span class="text-[10px] font-semibold ${t.remDanger?'text-red-600':'text-amber-600'}">${t.rem}</span>
       </div>
     </div>`).join('')
 
-  const chainHTML = s.chain.map(step=>`
+  const chain = s.chain.map(step=>`
     <div class="flex items-start gap-3 py-2.5 ${step.warn?'bg-amber-50 -mx-4 px-4':''}">
-      <div class="w-2.5 h-2.5 rounded-full shrink-0 mt-1 chain-dot-${step.s}"></div>
+      <div class="w-2.5 h-2.5 rounded-full shrink-0 mt-1 ${step.s==='done'?'bg-green-500':step.s==='pending'?'bg-amber-500':'bg-slate-200 border border-slate-300'}"></div>
       <div class="flex-1 min-w-0">
-        <p class="text-xs font-medium truncate">${step.name}</p>
-        <p class="text-[10px] mt-0.5 ${step.warn?'text-amber-600':'text-muted-foreground'}">${step.sub}</p>
+        <p class="text-xs font-medium truncate text-slate-800">${step.name}</p>
+        <p class="text-[10px] mt-0.5 ${step.warn?'text-amber-600':'text-slate-400'}">${step.sub}</p>
       </div>
-      <span class="text-[10px] shrink-0 ${step.warn?'text-amber-600 font-medium':'text-muted-foreground'}">${step.time}</span>
+      <span class="text-[10px] shrink-0 ${step.warn?'text-amber-600 font-semibold':'text-slate-400'}">${step.time}</span>
     </div>`).join('')
 
   $('jp-main').innerHTML = `
-    <div class="grid ${kpiCols} gap-2">
-      ${s.kpis.map(k=>`<div class="bg-white border rounded-lg p-2.5"><p class="text-[9px] uppercase tracking-widest text-muted-foreground mb-1 leading-tight">${k.l}</p><p class="text-xl font-light ${k.danger?'text-red-600':k.warn?'text-amber-600':''}">${k.v}</p><p class="text-[9px] text-muted-foreground mt-0.5">${k.s}</p></div>`).join('')}
+    <div class="grid ${kCols} gap-2">
+      ${s.kpis.map(k=>`<div class="bg-white border border-slate-200 rounded-lg p-2.5"><p class="text-[9px] font-semibold uppercase tracking-widest text-slate-400 mb-1 leading-tight">${k.l}</p><p class="text-xl font-light ${k.danger?'text-red-600':k.warn?'text-amber-600':'text-slate-800'}">${k.v}</p><p class="text-[9px] text-slate-400 mt-0.5">${k.s}</p></div>`).join('')}
     </div>
-    <div class="space-y-2">
-      <div class="flex items-center justify-between">
-        <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">${s.sectionTitle}</p>
-        <span class="text-[10px] text-muted-foreground">${s.sectionNote}</span>
+    <div>
+      <div class="flex items-center justify-between mb-2">
+        <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400">${s.sectionTitle}</p>
+        <span class="text-[10px] text-slate-400">${s.sectionNote}</span>
       </div>
-      ${tasksHTML}
+      <div class="flex flex-col gap-2">${tasks}</div>
     </div>
-    <div class="alert alert-amber">
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-3">
       <div class="flex items-center gap-2 mb-1.5">
-        <span class="badge badge-default" style="background:#d97706;font-size:9px">AI</span>
-        <div>
-          <span class="font-semibold text-amber-800 text-sm">${s.agentTitle}</span>
-          <span class="text-[10px] text-amber-600 ml-2">${s.agentSub}</span>
-        </div>
+        <span class="text-[10px] font-semibold bg-amber-600 text-white px-2 py-0.5 rounded-full">AI</span>
+        <span class="font-semibold text-amber-800 text-sm">${s.agentTitle}</span>
+        <span class="text-[10px] text-amber-600">${s.agentSub}</span>
       </div>
       <p class="text-xs text-amber-800 leading-relaxed mb-2.5" style="white-space:pre-line">${s.agentBody}</p>
       <div class="flex gap-2 flex-wrap">
-        ${s.agentBtns.map((btn,i)=>`<button class="btn btn-sm ${i===0?'btn-amber':'btn-outline'}" ${i===0?'style="border-color:#d97706;color:#d97706"':''}>${btn}</button>`).join('')}
+        ${s.agentBtns.map((btn,i)=>`<button class="px-3 py-1.5 rounded-md text-xs font-medium ${i===0?'bg-amber-600 text-white hover:bg-amber-700':'border border-amber-300 text-amber-700 bg-white hover:bg-amber-50'}">${btn}</button>`).join('')}
       </div>
     </div>
-    <div class="bg-white border rounded-lg p-4">
-      <p class="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">${s.chainTitle}</p>
-      <div class="divide-y">${chainHTML}</div>
-    </div>
-  `
+    <div class="bg-white border border-slate-200 rounded-lg p-4">
+      <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-1">${s.chainTitle}</p>
+      <div class="divide-y divide-slate-100">${chain}</div>
+    </div>`
 
-  // audit
-  $('jp-audit').innerHTML = s.audit.map(e=>`
-    <div class="py-2">
-      <p class="text-[10px] text-muted-foreground mb-0.5">${e.time}</p>
-      <p class="text-[10px] leading-relaxed"><span class="${e.sys?'text-blue-500':'text-amber-600'}">${e.who} </span><span class="text-muted-foreground">${e.text}</span></p>
-    </div>`).join('')
+  $('jp-audit').innerHTML = s.audit.map(e=>`<div class="py-2"><p class="text-[10px] text-slate-400 mb-0.5">${e.time}</p><p class="text-[10px] leading-relaxed"><span class="${e.sys?'text-blue-500':'text-amber-600'}">${e.who} </span><span class="text-slate-500">${e.text}</span></p></div>`).join('')
+  $('jp-perms').innerHTML = s.perms.map(([r,w])=>`<div class="flex justify-between"><span class="text-[10px] text-slate-400">${r}</span><span class="text-[10px] font-medium text-slate-700">${w}</span></div>`).join('')
 
-  // perms
-  $('jp-perms').innerHTML = s.perms.map(([role,who])=>`<div class="flex justify-between items-center"><span class="text-[10px] text-muted-foreground">${role}</span><span class="text-[10px] font-medium">${who}</span></div>`).join('')
-
-  // lang toggle
-  $('lt-jp').className = jpLang==='jp' ? 'text-amber-600 font-semibold' : 'text-muted-foreground'
-  $('lt-en').className = jpLang==='en' ? 'text-amber-600 font-semibold' : 'text-muted-foreground'
+  $('lt-jp').className = jpLang==='jp' ? 'text-amber-600 font-semibold' : 'text-slate-400'
+  $('lt-en').className = jpLang==='en' ? 'text-amber-600 font-semibold' : 'text-slate-400'
 }
 
-// ── CONFIG PANEL ───────────────────────────────────────────────────────────
 function renderPanel() {
   const c = CFG[market]
-  const panelContent = $('panel-content')
-  const renderers = {market: renderMarketPanel, it: renderITPanel, ops: renderOpsPanel, user: renderUserPanel}
-  panelContent.innerHTML = renderers[activeTab](c)
+  const map = {market:marketPanel,it:itPanel,ops:opsPanel,user:userPanel}
+  $('panel-content').innerHTML = map[activeTab](c)
 }
 
-// ── CONTROLS ───────────────────────────────────────────────────────────────
 function setMarket(m) {
   market = m
   $('frames-container').style.transform = m==='jp' ? 'translateX(-50%)' : 'translateX(0)'
-  $('btn-us').classList.toggle('active', m==='us')
-  $('btn-jp').classList.toggle('active', m==='jp')
+  $('btn-us').className = `flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all ${m==='us'?'bg-blue-50 border-blue-300 text-blue-800':'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`
+  $('btn-jp').className = `flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-medium transition-all ${m==='jp'?'bg-amber-50 border-amber-300 text-amber-800':'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`
   renderPanel()
-  renderJPFrame()
+  renderJP()
 }
 
 function setTab(tab, btn) {
@@ -701,17 +594,11 @@ function setTab(tab, btn) {
 
 function toggleJpLang() {
   jpLang = jpLang==='jp' ? 'en' : 'jp'
-  renderJPFrame()
+  renderJP()
 }
 
-function jpSelectTask(i) {
-  jpSelTask = i
-  renderJPFrame()
-}
-
-// ── INIT ──────────────────────────────────────────────────────────────────
 renderPanel()
-renderJPFrame()
+renderJP()
 </script>
 </body>
 </html>
